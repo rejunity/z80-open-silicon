@@ -34,15 +34,6 @@ pinout:
   ui[6]: ""
   ui[7]: ""
 
-        .m1_n    (ctrl_signals[0]),
-        .mreq_n  (ctrl_signals[1]),
-        .iorq_n  (ctrl_signals[2]),
-        .rd_n    (ctrl_signals[3]),
-        .wr_n    (ctrl_signals[4]),
-        .rfsh_n  (ctrl_signals[5]),
-        .halt_n  (ctrl_signals[6]),
-        .busak_n (ctrl_signals[7])
-
   # Outputs
   uo[0]: "/M1    . A0 . A8" 
   uo[1]: "/MREQ  . A1 . A9"
