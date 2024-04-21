@@ -1,0 +1,47 @@
+name: test
+on: [push, workflow_dispatch]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install iverilog
+        shell: bash
+        run: sudo apt-get update && sudo apt-get install -y iverilog
+
+      # Set Python up and install cocotb
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python packages
+        shell: bash
+        run: pip install -r test/requirements.txt
+
+      - name: Run tests
+        run: |
+          cd test
+          make clean
+          make
+          # make will return success even if the test fails, so check for failure in the results.xml
+          ! grep failure results.xml
+
+      - name: Test Summary
+        uses: test-summary/action@v2.3
+        with:
+          paths: "test/results.xml"
+        if: always()
+
+      - name: upload vcd
+        if: success() || failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-vcd
+          path: |
+            test/tb.vcd
+            test/result.xml
