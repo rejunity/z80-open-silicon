@@ -1,53 +1,67 @@
 # Tiny Tapeout project information
 project:
-  title:        ""      # Project title
-  author:       ""      # Your name
-  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  ""      # One line description of what your project does
+  title:        "Zilog Z80"      # Project title
+  author:       "ReJ aka Renaldas Zioma"      # Your name
+  discord:      "rzioma"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "Z80 open-source silicon. Goal is to become a silicon proven, pin compatible, open-source replacement for classic Z80."      # One line description of what your project does
   language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
-  clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
+  clock_hz:     16000000       # Clock frequency in Hz (or 0 if not applicable)
 
   # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+  tiles: "4x2"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
-  top_module:  "tt_um_example"
+  top_module:  "tt_um_rejunity_z80"      # Your top module name
   
   # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
-  source_files:        
-    - "project.v"
+  source_files:
+    - "tv80/tv80_alu.v"
+    - "tv80/tv80_reg.v"
+    - "tv80/tv80_mcode.v"
+    - "tv80/tv80_core.v"
+    - "tv80/tv80s.v"
+    - "tt_um_rejunity_z80.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: ""
-  ui[1]: ""
-  ui[2]: ""
-  ui[3]: ""
+  ui[0]: "/WAIT"
+  ui[1]: "/INT"
+  ui[2]: "/NMI"
+  ui[3]: "/BUSRQ"
   ui[4]: ""
   ui[5]: ""
   ui[6]: ""
   ui[7]: ""
 
+        .m1_n    (ctrl_signals[0]),
+        .mreq_n  (ctrl_signals[1]),
+        .iorq_n  (ctrl_signals[2]),
+        .rd_n    (ctrl_signals[3]),
+        .wr_n    (ctrl_signals[4]),
+        .rfsh_n  (ctrl_signals[5]),
+        .halt_n  (ctrl_signals[6]),
+        .busak_n (ctrl_signals[7])
+
   # Outputs
-  uo[0]: ""
-  uo[1]: ""
-  uo[2]: ""
-  uo[3]: ""
-  uo[4]: ""
-  uo[5]: ""
-  uo[6]: ""
-  uo[7]: ""
+  uo[0]: "/M1    . A0 . A8" 
+  uo[1]: "/MREQ  . A1 . A9"
+  uo[2]: "/IORQ  . A2 . A10"
+  uo[3]: "/RD    . A3 . A11"
+  uo[4]: "/WR    . A4 . A12"
+  uo[5]: "/RFSH  . A5 . A13"
+  uo[6]: "/HALT  . A6 . A14"
+  uo[7]: "/BUSAK . A7 . A15"
 
   # Bidirectional pins
-  uio[0]: ""
-  uio[1]: ""
-  uio[2]: ""
-  uio[3]: ""
-  uio[4]: ""
-  uio[5]: ""
-  uio[6]: ""
-  uio[7]: ""
+  uio[0]: "D0"
+  uio[1]: "D1"
+  uio[2]: "D2"
+  uio[3]: "D3"
+  uio[4]: "D4"
+  uio[5]: "D5"
+  uio[6]: "D6"
+  uio[7]: "D7"
 
 # Do not change!
 yaml_version: 6
