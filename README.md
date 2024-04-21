@@ -1,6 +1,11 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg)
 
-The goal is to become a silicon proven, pin compatible, open-source replacement for classic Zilog Z80.
+# Zilog Z80
+On the path to become silicon proven, pin compatible, open-source replacement for classic Zilog Z80!
+
+## Existing Verilog Z80 implementations
+* TV80 https://github.com/hutch31/tv80
+* TV80 https://github.com/Obijuan/Z80-FPGA
 
 # Tiny Tapeout
 
