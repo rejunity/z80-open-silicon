@@ -3,7 +3,7 @@
 # Zilog Z80 modern open-source silicon clone
 On the path to become a silicon proven, pin compatible, open-source replacement for classic Zilog Z80!
 
-The first iteration is made for [Tiny Tapeout 07](https://tinytapeout.com) and is based on Guy Hutchison's [TV80](https://github.com/hutch31/tv80) Verilog core.
+The first iteration is made for [Tiny Tapeout 07](https://tinytapeout.com), fits in 4 tiles (0.064 mm^2) and is based on Guy Hutchison's [TV80](https://github.com/hutch31/tv80) Verilog core.
 
 ![](docs/2x2_tiles.png)
 
