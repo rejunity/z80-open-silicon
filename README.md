@@ -1,6 +1,8 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg)
 
-# Tiny Tapeout Verilog Project Template
+The goal is to become a silicon proven, pin compatible, open-source replacement for classic Zilog Z80.
+
+# Tiny Tapeout
 
 - [Read the documentation for project](docs/info.md)
 
