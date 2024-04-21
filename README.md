@@ -3,7 +3,18 @@
 # Zilog Z80
 On the path to become silicon proven, pin compatible, open-source replacement for classic Zilog Z80!
 
-## Existing Verilog Z80 implementations
+The first iteration is made for Tiny Tapeout and is based on Guy Hutchison's [TV80](https://github.com/hutch31/tv80) Verilog core.
+
+## Zilog Data Book
+[Zilog Data Book](http://cini.classiccmp.org//pdf/Zilog/Zilog%20Data%20Book.PDF)
+
+## Pinout
+![](.docs/z80-pinout-from-Zilog-Data-Book.png)
+
+## Z80 Reverse Engineering
+* [Why the Z-80's data pins are scrambled](http://www.righto.com/2014/09/why-z-80s-data-pins-are-scrambled.html)
+
+## Existing Z80 implementations
 * TV80 https://github.com/hutch31/tv80
 * TV80 https://github.com/Obijuan/Z80-FPGA
 
