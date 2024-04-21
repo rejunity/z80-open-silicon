@@ -1,6 +1,6 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg)
 
-# Zilog Z80
+# Zilog Z80 modern open-source silicon clone
 On the path to become silicon proven, pin compatible, open-source replacement for classic Zilog Z80!
 
 The first iteration is made for Tiny Tapeout and is based on Guy Hutchison's [TV80](https://github.com/hutch31/tv80) Verilog core.
@@ -9,7 +9,7 @@ The first iteration is made for Tiny Tapeout and is based on Guy Hutchison's [TV
 [Zilog Data Book](http://cini.classiccmp.org//pdf/Zilog/Zilog%20Data%20Book.PDF)
 
 ## Pinout
-![](.docs/z80-pinout-from-Zilog-Data-Book.png)
+![](docs/z80-pinout-from-Zilog-Data-Book.png)
 
 ## Z80 Reverse Engineering
 * [Why the Z-80's data pins are scrambled](http://www.righto.com/2014/09/why-z-80s-data-pins-are-scrambled.html)
