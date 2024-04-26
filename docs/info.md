@@ -111,3 +111,5 @@ Every 4th cycle 8-bit value on `output` pins (**Address bus low 8-bit**) should 
 ## External hardware
 
 Bus de-multiplexor, external memory, 8-bit computer such as [ZX Spectrum](https://en.wikipedia.org/wiki/ZX_Spectrum).
+
+Alternatively the RP2040 on the TinyTapeout test PCB can be used to simulate RAM and I/O.
