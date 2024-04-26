@@ -1,16 +1,26 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg)
 
 # Announcement
-On April 15 of 2024 Zilog has [announced End-of-Life](https://www.mouser.com/PCN/Littelfuse_PCN_Z84C00.pdf) for Z80 - of one of the most famous 8-bit CPUs of all time.
+On April 15 of 2024 Zilog has [announced End-of-Life](https://www.mouser.com/PCN/Littelfuse_PCN_Z84C00.pdf) for Z80, one of the most famous 8-bit CPUs of all time.
 
-It is a time for open-source and hardware preservation community to step in with a Free and Open Source Silicon (FOSS) replacement for Zilog Z80!
+It is a time for open-source and hardware preservation community to step in with a Free and Open Source Silicon (FOSS) replacement for Zilog Z80.
 
-# Zilog Z80 modern open source silicon clone
+The **first** fabrication of **FOSS Z80** is scheduled for **June of 2024**!
+
+# Zilog Z80 modern free and open source silicon clone
 On the path to become a silicon proven, pin compatible, open-source replacement for classic Zilog Z80.
 
-The first iteration is made for [Tiny Tapeout 07](https://tinytapeout.com), fits in 4 tiles (0.064 mm^2) and is based on Guy Hutchison's [TV80](https://github.com/hutch31/tv80) Verilog core.
+FOSS Z80 leverages [OpenROAD](https://openroad.readthedocs.io/en) flow and FOSS [130 nm Skywater PDK](https://skywater-pdk.readthedocs.io/en/main/) to synthesize production ready silicon. [Tiny Tapeout](https://tinytapeout.com) infrastructure is used to test and pool design with many others to reduce the cost of physical chip fabrication at [Skywater Foundries](https://en.wikipedia.org/wiki/SkyWater_Technology).
+
+## The first iteration of FOSS Z80 silicon
+
+The first iteration is developed with [Tiny Tapeout 07](https://tinytapeout.com) using 130 nm process and fits on a 0.064 mm<sup>2</sup> die area. The first fabrication is scheduled for June of 2024 as a part of [CI 2406 Shuttle](https://platform.efabless.com/projects/shuttle/23).
+
+The implementation is based around Guy Hutchison's [TV80](https://github.com/hutch31/tv80) Verilog core.
 
 [Read documentation for Tiny Tapeout 07 version](docs/info.md)
+
+Below is the image of [GDSII](https://en.wikipedia.org/wiki/GDSII) integrated circuit layout for FOSS Z80 and is the result of automatic place-and-route flow in [OpenROAD](https://openroad.readthedocs.io/en) using [130 nm](https://skywater-pdk.readthedocs.io/en/main/) "gates" logic elements.
 
 ![](docs/2x2_tiles.png)
 
