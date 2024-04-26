@@ -35,14 +35,14 @@ pinout:
   ui[7]: ""
 
   # Outputs
-  uo[0]: "/M1    . A0 . A8" 
-  uo[1]: "/MREQ  . A1 . A9"
-  uo[2]: "/IORQ  . A2 . A10"
-  uo[3]: "/RD    . A3 . A11"
-  uo[4]: "/WR    . A4 . A12"
-  uo[5]: "/RFSH  . A5 . A13"
-  uo[6]: "/HALT  . A6 . A14"
-  uo[7]: "/BUSAK . A7 . A15"
+  uo[0]: "/M1, A0, A8" 
+  uo[1]: "/MREQ, A1, A9"
+  uo[2]: "/IORQ, A2, A10"
+  uo[3]: "/RD, A3, A11"
+  uo[4]: "/WR, A4, A12"
+  uo[5]: "/RFSH, A5, A13"
+  uo[6]: "/HALT, A6, A14"
+  uo[7]: "/BUSAK, A7, A15"
 
   # Bidirectional pins
   uio[0]: "D0"
