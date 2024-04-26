@@ -1,20 +1,29 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg)
 
-[https://www.mouser.com/PCN/Littelfuse_PCN_Z84C00.pdf]
+# Announcement
+On April 15 of 2024 Zilog has [announced End-of-Life](https://www.mouser.com/PCN/Littelfuse_PCN_Z84C00.pdf) for Z80 - of one of the most famous 8-bit CPUs of all time.
 
-# Zilog Z80 modern open-source silicon clone
-On the path to become a silicon proven, pin compatible, open-source replacement for classic Zilog Z80!
+It is a time for open-source and hardware preservation community to step in with a Free and Open Source Silicon (FOSS) replacement for Zilog Z80!
+
+# Zilog Z80 modern open source silicon clone
+On the path to become a silicon proven, pin compatible, open-source replacement for classic Zilog Z80.
 
 The first iteration is made for [Tiny Tapeout 07](https://tinytapeout.com), fits in 4 tiles (0.064 mm^2) and is based on Guy Hutchison's [TV80](https://github.com/hutch31/tv80) Verilog core.
 
+[Read documentation for Tiny Tapeout 07 version](docs/info.md)
+
 ![](docs/2x2_tiles.png)
 
-## TODO
-* [ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) in testbench
-* Compare to another Verilog core: [A-Z80](https://github.com/gdevic/A-Z80)
-* Tapeout with ChipIgnite
+## Further Plan / ToDo
+* Add thorough instruction (including 'illegal') execution tests [ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) to testbench
+* Compare different implementations: Verilog core [A-Z80](https://github.com/gdevic/A-Z80), Netlist based [Z80Explorer](https://github.com/gdevic/Z80Explorer)
+* Tapeout with ChipIgnite in QFN44 package
+* Tapeout with DIP40 package
+* Create gate-level layouts that would resemble the original Z80 layout, see the original [chip dies](#Z80-Die-shots) below. Zilog designed Z80 by manually placing each transistor by hand.
 
-### Z80 pinout
+# Z80
+
+## Pinout
 ```
                    ,---------.__,---------.
          <--   A11 |1                   40| A10    -->       
@@ -40,7 +49,7 @@ The first iteration is made for [Tiny Tapeout 07](https://tinytapeout.com), fits
                    `----------------------'
 ```
 
-### Documentation
+## Documentation
 * [Z80 Users Manual](https://baltazarstudios.com/webshare/A-Z80/Z80_CPU_Users_Manual_2004.pdf)
 * [Z80 Users Manual from Mostek](https://baltazarstudios.com/webshare/A-Z80/z80-mostek.pdf)
 * [Zilog Data Book](http://cini.classiccmp.org//pdf/Zilog/Zilog%20Data%20Book.PDF)
@@ -48,7 +57,7 @@ The first iteration is made for [Tiny Tapeout 07](https://tinytapeout.com), fits
 * [Undocumented instructions](https://baltazarstudios.com/webshare/A-Z80/z80-documented-v0.91.pdf)
 * [Opcode table](https://baltazarstudios.com/webshare/A-Z80/Z80-Opcode-Tables.pdf) and [timing](https://baltazarstudios.com/webshare/A-Z80/Z80-Instruction-List-with-T-states.pdf)
 
-### Oral History of the Development of the Z80
+## Oral History of the Development of the Z80
 [Oral History Panel on the Founding of the Company and the Development of the Z80 Microprocessor](http://archive.computerhistory.org/resources/text/Oral_History/Zilog_Z80/102658073.05.01.pdf)
 
 [M. Shima on Demystifying Microprocessor Design](https://baltazarstudios.com/webshare/A-Z80/Library/Demystifying%20Microprocessor%20Design%20-%20M.%20Shima.pdf)
@@ -60,10 +69,10 @@ The first iteration is made for [Tiny Tapeout 07](https://tinytapeout.com), fits
 
 ## Z80 Die shots
 * [How to "read" die shots](https://downloads.reactivemicro.com/Electronics/Reverse%20Engineering/6502%20-%20Guideline%20to%20Reverse%20Engineering%20v1.0.pdf)
-* nMOS variant [Z8400 with 'Zilog 75' marking](https://siliconpr0n.org/map/zilog/z8400aps-z80acpu/bercovici_mz/) and [Zilog Z8400 with 'DC' letter marking](https://siliconpr0n.org/map/zilog/z0840008/marmontel_mz_ms20x/)
-* CMOS variants [Zilog Z84C00](http://visual6502.org/images/pages/Zilog_Z84C00_die_shots.html) and [8MHz version](https://siliconpr0n.org/map/zilog/z84c0008fec/marmontel_mz_ms20x/)
-* Nintendo Z80 variant from Super Game Boy [SGB-CPU 01](https://siliconpr0n.org/map/nintendo/sgb-cpu-01/mcmaster_mz_mit20x/) from 1994
-* Pauli Rautakorpi images of Z80 clones: [National Semiconductor NSC800](https://commons.wikimedia.org/wiki/User:Birdman86#/media/File:NS_NSC800_die.jpg), [Mostek MK3880](https://commons.wikimedia.org/wiki/User:Birdman86#/media/File:Mostek_MK3880_die.jpg), [MME9201 with 'U880/5' markings](https://commons.wikimedia.org/wiki/User:Birdman86#/media/File:MME_80A-CPU_die.JPG), 
+* nMOS variant [Z8400 with 'Zilog 75'](https://siliconpr0n.org/map/zilog/z8400aps-z80acpu/bercovici_mz/) marking and [Zilog Z8400 with 'DC'](https://siliconpr0n.org/map/zilog/z0840008/marmontel_mz_ms20x/) letter marking
+* CMOS variants [Zilog Z84C00](http://visual6502.org/images/pages/Zilog_Z84C00_die_shots.html) and its [8MHz version](https://siliconpr0n.org/map/zilog/z84c0008fec/marmontel_mz_ms20x/)
+* Nintendo Z80 variant from Super Game Boy [SGB-CPU 01](https://siliconpr0n.org/map/nintendo/sgb-cpu-01/mcmaster_mz_mit20x/) produced in 1994
+* Pauli Rautakorpi images of Z80 clones: [National Semiconductor NSC800](https://commons.wikimedia.org/wiki/User:Birdman86#/media/File:NS_NSC800_die.jpg), [Mostek MK3880](https://commons.wikimedia.org/wiki/User:Birdman86#/media/File:Mostek_MK3880_die.jpg), [MME9201 with 'U880/5'](https://commons.wikimedia.org/wiki/User:Birdman86#/media/File:MME_80A-CPU_die.JPG) markings 
 * Zeptobar’s images of [Zilog Z0840004PSC](https://zeptobars.com/en/read/Zilog-Z80-Z0840004PSC) from 1990, [Soviet KR1858VM3](https://happytrees.org/dieshots/Soviet_-_KR1858VM3#/media/File:KR1858VM3-HD.jpg) with an uncommon layout, [MME Z80A](https://zeptobars.com/en/read/Zilog-Z80-Z80A) a clone on a 5um technology larger than the original Zilog chip, [Soviet KR1858VM1](https://zeptobars.com/en/read/KR1858VM1-Z80-MME-Angstrem) a clone of U880/6 which is in turn a clone of Z80, [Soviet T34VM1](https://zeptobars.com/en/read/t34vm1-z80-angstrem-mme) based on U880/5
 
 ![](http://visual6502.org/images/Z84C00/Z84C00_die_shot_20x_1b_1600w.jpg)
@@ -86,11 +95,7 @@ The first iteration is made for [Tiny Tapeout 07](https://tinytapeout.com), fits
 * A-Z80 in Verilog https://github.com/gdevic/A-Z80 its [overview](https://baltazarstudios.com/z80-ground/) and [details](https://baltazarstudios.com/z80-cpu/)
 * Z80 net-list level emulator https://github.com/gdevic/Z80Explorer and its [overview](https://baltazarstudios.com/z80explorer/) and [Users Guide](https://gdevic.github.io/Z80Explorer/)
 
-# Tiny Tapeout
-
-- [Read the documentation for project](docs/info.md)
-
-## What is Tiny Tapeout?
+# What is Tiny Tapeout?
 
 Tiny Tapeout is an educational project that aims to make it easier and cheaper than ever to get your digital designs manufactured on a real chip.
 
