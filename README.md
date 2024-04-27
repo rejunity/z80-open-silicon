@@ -16,13 +16,19 @@ FOSS Z80 leverages [OpenROAD](https://openroad.readthedocs.io/en) flow and FOSS 
 
 The first iteration is developed with [Tiny Tapeout 07](https://tinytapeout.com) using 130 nm process and fits on a 0.064 mm<sup>2</sup> die area. The first fabrication is scheduled for June of 2024 as a part of [CI 2406 Shuttle](https://platform.efabless.com/projects/shuttle/23).
 
+<p align="center" width="100%">
+    <img width="30%" src="./docs/tt07_z80.png">
+</p>
+
 The implementation is based around Guy Hutchison's [TV80](https://github.com/hutch31/tv80) Verilog core.
 
 [Read documentation for Tiny Tapeout 07 version](docs/info.md)
 
 Below is the image of [GDSII](https://en.wikipedia.org/wiki/GDSII) integrated circuit layout for FOSS Z80. It is the result of automatic place-and-route flow in [OpenROAD](https://openroad.readthedocs.io/en) using [130 nm](https://skywater-pdk.readthedocs.io/en/main/) "gates" logic elements.
 
-![](docs/2x2_tiles.png)
+<p align="center" width="100%">
+    <img width="50%" src="./docs/2x2_tiles.png">
+</p>
 
 ## Further Plan / ToDo
 * Add thorough instruction (including 'illegal') execution tests [ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) to testbench
