@@ -18,13 +18,13 @@ FOSS Z80 leverages [OpenROAD](https://openroad.readthedocs.io/en) flow and FOSS 
 
 The first iteration is developed with [Tiny Tapeout 07](https://tinytapeout.com) using 130 nm process and fits on a 0.064 mm<sup>2</sup> die area. The first fabrication is scheduled for June of 2024 as a part of [CI 2406 Shuttle](https://platform.efabless.com/projects/shuttle/23).
 
+Check status here: https://app.tinytapeout.com/projects/668
+
 <p align="center" width="100%">
     <img width="30%" src="./docs/tt07_z80.png">
 </p>
 
 The implementation is based around Guy Hutchison's [TV80](https://github.com/hutch31/tv80) Verilog core.
-
-[Read documentation for Tiny Tapeout 07 version](docs/info.md)
 
 Below is the image of [GDSII](https://en.wikipedia.org/wiki/GDSII) integrated circuit layout for FOSS Z80. It is the result of automatic place-and-route flow in [OpenROAD](https://openroad.readthedocs.io/en) using [130 nm](https://skywater-pdk.readthedocs.io/en/main/) "gates" logic elements.
 
@@ -32,13 +32,46 @@ Below is the image of [GDSII](https://en.wikipedia.org/wiki/GDSII) integrated ci
     <img width="50%" src="./docs/2x2_tiles.png">
 </p>
 
-## Further Plan / ToDo
-* Add thorough tests of the Z80 instruction set (including 'illegal' instructions) [ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) to testbench
-* Add thorough tests for timing of input/output signals
-* Compare different implementations: Verilog core [A-Z80](https://github.com/gdevic/A-Z80), Netlist based [Z80Explorer](https://github.com/gdevic/Z80Explorer)
-* Tapeout with ChipIgnite in QFN64 package, create a PCB adapter from QFN64 to DIP40
-* Tapeout with DIP40 package
-* Create gate-level layouts that would resemble the original Z80 layout, see the original [chip dies](#Z80-Die-shots) below. Zilog designed Z80 by manually placing each transistor by hand.
+## Plan
+- [x] Submit with [Tiny Tapeout 07](https://app.tinytapeout.com/projects/668)
+- [x] Write the basic documentation for Tiny Tapeout 07: [docs/info.md](docs/info.md)
+- [ ] Add thorough tests for all Z80 instructions including the 'illegal' ones [ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) to a testbench
+- [ ] Add thorough timing test of the input/output signals
+- [ ] Integrate the netlist based Z80 core into the testbench for ultimate validation
+- [ ] Compare different implementations: Verilog core [A-Z80](https://github.com/gdevic/A-Z80), Netlist based [Z80Explorer](https://github.com/gdevic/Z80Explorer), etc
+- [ ] Tapeout with ChipIgnite in QFN64 package, create a PCB adapter from QFN64 to DIP40
+- [ ] Tapeout with DIP40 package
+- [ ] Create gate-level layouts that would resemble the original Z80 layout, see the original [chip dies](#Z80-Die-shots) below. Zilog designed Z80 by manually placing each transistor by hand.
+
+
+# Quick start
+
+* You can find the top module in [src/tt_um_rejunity_z80.v](src/tt_um_rejunity_z80.v). It instantiates Z80 and adheres to [TinyTapeout constraints](https://tinytapeout.com/specs/gpio/) including multiplexing the output pins onto the 8 pins of TinyTapeout chip.
+* The core Verilog Z80 implementation is in [src/tv80](src/tv80) folder.
+* The configuration for [OpenROAD](https://theopenroadproject.org) synthesis and place-and-route flow is in the [src/config.tcl](src/config.tcl) file.
+* Finally, the testbench is implemented in [src/test/test.py](src/test/test.py).
+
+## Run it locally
+
+Follow the instructions from Tiny Tapeout's [Testing Your Design Guide](https://tinytapeout.com/hdl/testing/) and install required packages.
+
+```
+    sudo apt install iverilog verilator
+    pip3 install cocotb pytest
+```
+
+Next, run the testbench.
+
+```
+    cd src
+    make
+```
+
+If you are succesfull, you should see the tests passing:
+
+<img width="580" alt="image" src="https://github.com/rejunity/z80-open-silicon/assets/1733077/e90ee88a-b693-4b2a-a184-d827084d5905">
+<img width="609" alt="image" src="https://github.com/rejunity/z80-open-silicon/assets/1733077/099c6126-7e7e-468c-b775-070823e9a06c">
+
 
 # Z80
 
