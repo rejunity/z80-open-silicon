@@ -44,28 +44,29 @@ Below is the image of [GDSII](https://en.wikipedia.org/wiki/GDSII) integrated ci
 
 ## Pinout
 ```
-                   ,---------.__,---------.
-         <--   A11 |1                   40| A10    -->       
-         <--   A12 |2                   39| A9     -->        
-         <--   A13 |3       Z80 CPU     38| A8     -->        
-         <--   A14 |4                   37| A7     -->        
-         <--   A15 |5                   36| A6     -->
-         -->   CLK |6                   35| A5     -->
-         <->    D4 |7                   34| A4     -->
-         <->    D3 |8                   33| A3     -->            
-         <->    D5 |9                   32| A2     -->            
-         <->    D6 |10                  31| A1     -->            
-               VCC |11                  30| A0     -->           
-         <->    D2 |12                  29| GND           
-         <->    D7 |13                  28| /RFSH  -->          
-         <->    D0 |14                  27| /M1    -->           
-         <->    D1 |15                  26| /RESET <--      
-         -->  /INT |16                  25| /BUSRQ <--      
-         -->  /NMI |17                  24| /WAIT  <--      
-         <-- /HALT |18                  23| /BUSAK -->     
-         <-- /MREQ |19                  22| /WR    -->       
-         <-- /IORQ |20                  21| /RD    -->       
-                   `----------------------'
+               ,-------.___.-------.
+    <--    A11 |1                40| A10    -->
+    <--    A12 |2                39| A9     -->
+    <--    A13 |3     Z80 CPU    38| A8     -->
+    <--    A14 |4                37| A7     -->
+    <--    A15 |5                36| A6     -->
+    -->    CLK |6                35| A5     -->
+    <->     D4 |7                34| A4     -->
+    <->     D3 |8                33| A3     -->
+    <->     D5 |9                32| A2     -->
+    <->     D6 |10               31| A1     -->
+           VCC |11               30| A0     -->
+    <->     D2 |12               29| GND
+    <->     D7 |13               28| /RFSH  -->
+    <->     D0 |14               27| /M1    -->
+    <->     D1 |15               26| /RESET <--
+    -->   /INT |16               25| /BUSRQ <--
+    -->   /NMI |17               24| /WAIT  <--
+    <--  /HALT |18               23| /BUSAK -->
+    <--  /MREQ |19               22| /WR    -->
+    <--  /IORQ |20               21| /RD    -->
+               `-------------------'
+
 ```
 
 ## Documentation
@@ -91,9 +92,9 @@ Below is the image of [GDSII](https://en.wikipedia.org/wiki/GDSII) integrated ci
 * nMOS variant [Z8400 with 'Zilog 75'](https://siliconpr0n.org/map/zilog/z8400aps-z80acpu/bercovici_mz/) marking and [Zilog Z8400 with 'DC'](https://siliconpr0n.org/map/zilog/z0840008/marmontel_mz_ms20x/) letter marking
 * CMOS variants [Zilog Z84C00](http://visual6502.org/images/pages/Zilog_Z84C00_die_shots.html) and its [8MHz version](https://siliconpr0n.org/map/zilog/z84c0008fec/marmontel_mz_ms20x/)
 * Nintendo Z80 variant from Super Game Boy [SGB-CPU 01](https://siliconpr0n.org/map/nintendo/sgb-cpu-01/mcmaster_mz_mit20x/) produced in 1994
-* Sean Riddle's image of Mostek MK3880 clone [metal layer removed](https://happytrees.org/dieshots/Mostek_-_MK3880_(top_metal_removed)#/media/File:Mostek_MK3880_top_metal_removed.jpg)
+* Sean Riddle's image of the official second-source Mostek MK3880 [metal layer removed](https://happytrees.org/dieshots/Mostek_-_MK3880_(top_metal_removed)#/media/File:Mostek_MK3880_top_metal_removed.jpg)
 * Pauli Rautakorpi's images of Z80 clones: [National Semiconductor NSC800](https://commons.wikimedia.org/wiki/User:Birdman86#/media/File:NS_NSC800_die.jpg), [Mostek MK3880](https://commons.wikimedia.org/wiki/User:Birdman86#/media/File:Mostek_MK3880_die.jpg), [MME9201 with 'U880/5'](https://commons.wikimedia.org/wiki/User:Birdman86#/media/File:MME_80A-CPU_die.JPG) markings 
-* Zeptobar’s images of [Zilog Z0840004PSC](https://zeptobars.com/en/read/Zilog-Z80-Z0840004PSC) from 1990, [Soviet KR1858VM3](https://happytrees.org/dieshots/Soviet_-_KR1858VM3#/media/File:KR1858VM3-HD.jpg) with an uncommon layout, [MME Z80A](https://zeptobars.com/en/read/Zilog-Z80-Z80A) a clone on a 5um technology larger than the original Zilog chip, [Soviet KR1858VM1](https://zeptobars.com/en/read/KR1858VM1-Z80-MME-Angstrem) a clone of U880/6 which is in turn a clone of Z80, [Soviet T34VM1](https://zeptobars.com/en/read/t34vm1-z80-angstrem-mme) based on U880/5
+* Zeptobar’s images of [Zilog Z0840004PSC](https://zeptobars.com/en/read/Zilog-Z80-Z0840004PSC) from 1990, [Soviet CMOS KR1858VM3](https://happytrees.org/dieshots/Soviet_-_KR1858VM3#/media/File:KR1858VM3-HD.jpg) with an uncommon layout, [MME Z80A](https://zeptobars.com/en/read/Zilog-Z80-Z80A) a clone on a large 5um process, [Soviet KR1858VM1](https://zeptobars.com/en/read/KR1858VM1-Z80-MME-Angstrem) a clone of U880/6 which in turn was an unlicensed clone of Z80, [Soviet T34VM1](https://zeptobars.com/en/read/t34vm1-z80-angstrem-mme) based on U880/5
 
 ![](http://visual6502.org/images/Z84C00/Z84C00_die_shot_20x_1b_1600w.jpg)
 
