@@ -33,9 +33,10 @@ Below is the image of [GDSII](https://en.wikipedia.org/wiki/GDSII) integrated ci
 </p>
 
 ## Further Plan / ToDo
-* Add thorough instruction (including 'illegal') execution tests [ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) to testbench
+* Add thorough tests of the Z80 instruction set (including 'illegal' instructions) [ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) to testbench
+* Add thorough tests for timing of input/output signals
 * Compare different implementations: Verilog core [A-Z80](https://github.com/gdevic/A-Z80), Netlist based [Z80Explorer](https://github.com/gdevic/Z80Explorer)
-* Tapeout with ChipIgnite in QFN44 package
+* Tapeout with ChipIgnite in QFN64 package, create a PCB adapter from QFN64 to DIP40
 * Tapeout with DIP40 package
 * Create gate-level layouts that would resemble the original Z80 layout, see the original [chip dies](#Z80-Die-shots) below. Zilog designed Z80 by manually placing each transistor by hand.
 
