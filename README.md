@@ -34,7 +34,7 @@ Below is the image of [GDSII](https://en.wikipedia.org/wiki/GDSII) integrated ci
 
 ## Plan
 - [x] Submit with [Tiny Tapeout 07](https://app.tinytapeout.com/projects/668)
-- [x] Write the basic documentation for Tiny Tapeout 07: [docs/info.md](docs/info.md)
+- [x] Write basic documentation for Tiny Tapeout 07: [docs/info.md](docs/info.md)
 - [ ] Add thorough tests for all Z80 instructions including the 'illegal' ones [ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) to a testbench
 - [ ] Add thorough timing test of the input/output signals
 - [ ] Integrate the netlist based Z80 core into the testbench for ultimate validation
@@ -50,6 +50,10 @@ Below is the image of [GDSII](https://en.wikipedia.org/wiki/GDSII) integrated ci
 * The core Verilog Z80 implementation is in [src/tv80](src/tv80) folder.
 * The configuration for [OpenROAD](https://theopenroadproject.org) synthesis and place-and-route flow is in the [src/config.tcl](src/config.tcl) file.
 * Finally, the testbench is implemented in [src/test/test.py](src/test/test.py).
+
+Generated layout artifacts are in [gds](gds) folder. You can use [KLayout](https://www.klayout.de) viewer to inspect them:
+* [GDSII file of Z80 core](gds/tinytapeout_07_skywater130A/tt_um_rejunity_z80.gds)
+* [OASIS file of the Tiny Tapeout 07 chip with the Z80 core](gds/tinytapeout_07_skywater130A/caravel_24066810.oas)
 
 ## Run it locally
 
