@@ -9,7 +9,7 @@ It is a time for open-source and hardware preservation community to step in with
 
 The **first** fabrication of **FOSS clone of Z80** is scheduled for **June of 2024**!
 
-# Zilog Z80 modern free and open source silicon clone
+# Modern free and open source silicon clone of Zilog's Z80
 On the path to become a silicon proven, pin compatible, open-source replacement for classic Zilog Z80.
 
 FOSS Z80 leverages [OpenROAD](https://openroad.readthedocs.io/en) flow and FOSS [130 nm Skywater PDK](https://skywater-pdk.readthedocs.io/en/main/) to synthesize production ready silicon. [Tiny Tapeout](https://tinytapeout.com) infrastructure is used to test and pool design with many others to reduce the cost of physical chip fabrication at [Skywater Foundries](https://en.wikipedia.org/wiki/SkyWater_Technology).
