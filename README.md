@@ -7,7 +7,7 @@ It is a time for open-source and hardware preservation community to step in with
 
 **GOAL: To develop a drop-in Z80 replacement in 8-bit home computers such as [ZX Spectrum](https://www.spectrumforeveryone.co.uk/technical/zx-spectrum-pcb-schematics-layout/).**
 
-The **first** fabrication of **FOSS Z80** is scheduled for **June of 2024**!
+The **first** fabrication of **FOSS clone of Z80** is scheduled for **June of 2024**!
 
 # Zilog Z80 modern free and open source silicon clone
 On the path to become a silicon proven, pin compatible, open-source replacement for classic Zilog Z80.
