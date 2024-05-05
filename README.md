@@ -43,6 +43,11 @@ Below is the image of [GDSII](https://en.wikipedia.org/wiki/GDSII) integrated ci
 - [ ] Tapeout with DIP40 package
 - [ ] Create gate-level layouts that would resemble the original Z80 layout, see the original [chip dies](#Z80-Die-shots) below. Zilog designed Z80 by manually placing each transistor by hand.
 
+# How to Contribute
+Join the [Tiny Tapeout Discord forum](https://tinytapeout.com/discord).
+
+Browse [issues](https://github.com/rejunity/z80-open-silicon/issues).
+
 
 # Quick start
 
@@ -75,7 +80,6 @@ If you are succesfull, you should see the tests passing:
 
 <img width="580" alt="image" src="https://github.com/rejunity/z80-open-silicon/assets/1733077/e90ee88a-b693-4b2a-a184-d827084d5905">
 <img width="609" alt="image" src="https://github.com/rejunity/z80-open-silicon/assets/1733077/099c6126-7e7e-468c-b775-070823e9a06c">
-
 
 # Z80
 
@@ -126,16 +130,18 @@ If you are succesfull, you should see the tests passing:
 
 ## Z80 Die shots
 * [How to "read" die shots](https://downloads.reactivemicro.com/Electronics/Reverse%20Engineering/6502%20-%20Guideline%20to%20Reverse%20Engineering%20v1.0.pdf)
-* nMOS variant [Z8400 with 'Zilog 75'](https://siliconpr0n.org/map/zilog/z8400aps-z80acpu/bercovici_mz/) marking and [Zilog Z8400 with 'DC'](https://siliconpr0n.org/map/zilog/z0840008/marmontel_mz_ms20x/) letter marking
+* nMOS variants [Z8400 with 'Zilog 75'](https://siliconpr0n.org/map/zilog/z8400aps-z80acpu/bercovici_mz/) marking and [Zilog Z8400 with 'DC'](https://siliconpr0n.org/map/zilog/z0840008/marmontel_mz_ms20x/) letter marking
 * CMOS variants [Zilog Z84C00](http://visual6502.org/images/pages/Zilog_Z84C00_die_shots.html) and its [8MHz version](https://siliconpr0n.org/map/zilog/z84c0008fec/marmontel_mz_ms20x/)
 * Nintendo Z80 variant from Super Game Boy [SGB-CPU 01](https://siliconpr0n.org/map/nintendo/sgb-cpu-01/mcmaster_mz_mit20x/) produced in 1994
 * Sean Riddle's image of the official second-source Mostek MK3880 [metal layer removed](https://happytrees.org/dieshots/Mostek_-_MK3880_(top_metal_removed)#/media/File:Mostek_MK3880_top_metal_removed.jpg)
 * Pauli Rautakorpi's images of Z80 clones: [National Semiconductor NSC800](https://commons.wikimedia.org/wiki/User:Birdman86#/media/File:NS_NSC800_die.jpg), [Mostek MK3880](https://commons.wikimedia.org/wiki/User:Birdman86#/media/File:Mostek_MK3880_die.jpg), [MME9201 with 'U880/5'](https://commons.wikimedia.org/wiki/User:Birdman86#/media/File:MME_80A-CPU_die.JPG) markings 
 * Zeptobar’s images of [Zilog Z0840004PSC](https://zeptobars.com/en/read/Zilog-Z80-Z0840004PSC) from 1990, [Soviet CMOS KR1858VM3](https://happytrees.org/dieshots/Soviet_-_KR1858VM3#/media/File:KR1858VM3-HD.jpg) with an uncommon layout, [MME Z80A](https://zeptobars.com/en/read/Zilog-Z80-Z80A) a clone on a large 5um process, [Soviet KR1858VM1](https://zeptobars.com/en/read/KR1858VM1-Z80-MME-Angstrem) a clone of U880/6 which in turn was an unlicensed clone of Z80, [Soviet T34VM1](https://zeptobars.com/en/read/t34vm1-z80-angstrem-mme) based on U880/5
+* nMOS variant [GoldStar Z80](https://www.cl.cam.ac.uk/~sps32/Z80proj/Z80_traps.pdf) can be found in "Finding traps" article by Sergei Skorobogatov
 
 ![](http://visual6502.org/images/Z84C00/Z84C00_die_shot_20x_1b_1600w.jpg)
 
 ## Z80 Reverse Engineering
+* [Finding "traps" in Zilog Z80 CPU by Sergei Skorobogatov](https://www.cl.cam.ac.uk/~sps32/Z80proj/Z80_traps.pdf)
 * [Z80 Instruction Register deciphered](https://baltazarstudios.com/z80-instruction-register-deciphered/)
 * [Z80 Tri-stated Data & Address bus gates](https://baltazarstudios.com/anatomy-z80-gate/)
 * [Z80 (un)documented behavior](https://baltazarstudios.com/zilog-z80-undocumented-behavior/)
@@ -152,6 +158,7 @@ If you are succesfull, you should see the tests passing:
 * TV80 in Verilog https://github.com/Obijuan/Z80-FPGA
 * A-Z80 in Verilog https://github.com/gdevic/A-Z80 its [overview](https://baltazarstudios.com/z80-ground/) and [details](https://baltazarstudios.com/z80-cpu/)
 * Z80 net-list level emulator https://github.com/gdevic/Z80Explorer and its [overview](https://baltazarstudios.com/z80explorer/) and [Users Guide](https://gdevic.github.io/Z80Explorer/)
+* Online Z80 net-list emulator at [Visual6502.org](http://www.visual6502.org/JSSim/expert-z80.html)
 
 # What is Tiny Tapeout?
 
