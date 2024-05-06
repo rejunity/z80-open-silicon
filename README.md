@@ -44,10 +44,9 @@ Below is the image of [GDSII](https://en.wikipedia.org/wiki/GDSII) integrated ci
 - [ ] Create gate-level layouts that would resemble the original Z80 layout, see the original [chip dies](#Z80-Die-shots) below. Zilog designed Z80 by manually placing each transistor by hand.
 
 # How to Contribute
-Join the [Tiny Tapeout Discord forum](https://tinytapeout.com/discord).
+Join the [Tiny Tapeout Discord](https://tinytapeout.com/discord) forum.
 
 Browse [issues](https://github.com/rejunity/z80-open-silicon/issues).
-
 
 # Quick start
 
@@ -80,6 +79,15 @@ If you are succesfull, you should see the tests passing:
 
 <img width="580" alt="image" src="https://github.com/rejunity/z80-open-silicon/assets/1733077/e90ee88a-b693-4b2a-a184-d827084d5905">
 <img width="609" alt="image" src="https://github.com/rejunity/z80-open-silicon/assets/1733077/099c6126-7e7e-468c-b775-070823e9a06c">
+
+# Computers
+* ZX Spectrum 16K - ?
+* [ZX Spectrum 48K](https://spectrumforeveryone.com/wp-content/uploads/2017/08/ZXSpectrumIssue2-Schematics.gif) - (interrupted) 3.5 MHz Z80 <= ULA <= 14MHz crystal
+* ZX Spectrum 128K -  (interrupted) 3.54690 MHz Z80 <= ULA <= ?? crystal
+* [Amstrad CPC](https://www.cpcwiki.eu/imgs/6/68/464Schematic_new.png) - 4 MHz Z80 <= GA4007 <= 16Mhz crystal
+* MSX1, MSX2 - 3.??
+* [ColecoVision console](https://wiki.console5.com/wiki/File:Colecovision-Schematic---Audio,-Reset,-Clocks.png) - 3.57954 MHz Z80 <= /2 <= 7.15909 MHz crystal
+* TSR80 [CPU sheet](http://billr.incolor.com/trs80sch-sheet1of2-part1of5.GIF) [clock sheet](http://billr.incolor.com/trs80sch-sheet2of2-part1of5.GIF) - 1.774 MHz Z80 <= /6 <= 10.6445 MHz
 
 # Z80
 
