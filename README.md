@@ -87,6 +87,7 @@ These machines are considerd as test-cases for hardware Z80 replacement:
 * ZX Spectrum 128K -  (interrupted) 3.54690 MHz Z80 <= ULA <= ?? crystal
 * [Amstrad CPC](https://www.cpcwiki.eu/imgs/6/68/464Schematic_new.png) - 4 MHz Z80 <= GA4007 <= 16Mhz crystal
 * MSX1, MSX2 - 3.??
+* Sinclair ZX80, ZX81 - 3.25 MHz Z80 (NEC μPD780C-1)
 * [ColecoVision console](https://wiki.console5.com/wiki/File:Colecovision-Schematic---Audio,-Reset,-Clocks.png) - 3.57954 MHz Z80 <= /2 <= 7.15909 MHz crystal
 * TSR80 [CPU sheet](http://billr.incolor.com/trs80sch-sheet1of2-part1of5.GIF) [clock sheet](http://billr.incolor.com/trs80sch-sheet2of2-part1of5.GIF) - 1.774 MHz Z80 <= /6 <= 10.6445 MHz
 
@@ -161,6 +162,7 @@ These machines are considerd as test-cases for hardware Z80 replacement:
 * [The Z-80 has a 4-bit ALU](http://www.righto.com/2013/09/the-z-80-has-4-bit-alu-heres-how-it.html)
 * [XOR, the silicon for two interesting gates explained](http://www.righto.com/2013/09/understanding-z-80-processor-one-gate.html)
 * [WZ aka MEMPTR, esoteric register of the Z80](https://baltazarstudios.com/webshare/A-Z80/memptr_eng.txt)
+* [Undocumented flags](https://github.com/hoglet67/Z80Decoder/wiki/Undocumented-Flags#scfccf) part of [Z80 Decoder](https://github.com/hoglet67/Z80Decoder) logic analyser / bus capture
 
 ## Existing Z80 implementations
 * TV80 in Verilog https://github.com/hutch31/tv80
