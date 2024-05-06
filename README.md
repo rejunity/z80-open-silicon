@@ -121,6 +121,7 @@ These machines are considerd as test-cases for hardware Z80 replacement:
 ```
 
 ## Documentation
+* [Z80 Datasheet](http://www.z80.info/zip/z80.pdf)
 * [Z80 Users Manual](https://baltazarstudios.com/webshare/A-Z80/Z80_CPU_Users_Manual_2004.pdf)
 * [Z80 Users Manual from Mostek](https://baltazarstudios.com/webshare/A-Z80/z80-mostek.pdf)
 * [Zilog Data Book](http://cini.classiccmp.org//pdf/Zilog/Zilog%20Data%20Book.PDF)
