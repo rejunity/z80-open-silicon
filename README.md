@@ -80,7 +80,8 @@ If you are succesfull, you should see the tests passing:
 <img width="580" alt="image" src="https://github.com/rejunity/z80-open-silicon/assets/1733077/e90ee88a-b693-4b2a-a184-d827084d5905">
 <img width="609" alt="image" src="https://github.com/rejunity/z80-open-silicon/assets/1733077/099c6126-7e7e-468c-b775-070823e9a06c">
 
-# Computers
+# Machines using Z80
+These machines are considerd as test-cases for hardware Z80 replacement:
 * ZX Spectrum 16K - ?
 * [ZX Spectrum 48K](https://spectrumforeveryone.com/wp-content/uploads/2017/08/ZXSpectrumIssue2-Schematics.gif) - (interrupted) 3.5 MHz Z80 <= ULA <= 14MHz crystal
 * ZX Spectrum 128K -  (interrupted) 3.54690 MHz Z80 <= ULA <= ?? crystal
