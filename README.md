@@ -87,7 +87,7 @@ If you are succesfull, you should see the tests passing:
 These machines are considerd as test-cases for hardware Z80 replacement:
 * ZX Spectrum 16K - ?
 * [ZX Spectrum 48K](https://spectrumforeveryone.com/wp-content/uploads/2017/08/ZXSpectrumIssue2-Schematics.gif) - (interrupted) 3.5 MHz Z80 <= ULA <= 14MHz crystal
-* ZX Spectrum 128K -  (interrupted) 3.54690 MHz Z80 <= ULA <= ?? crystal
+* [ZX Spectrum 128K](https://www.8bit-wiki.de/fileadmin/8bit-wiki/Sinclair/ZX_Spectrum/_zx128/manual/ZX%20Spectrum%20128%2B%20Schematics.pdf) -  (interrupted) 3.54690 MHz Z80 <= ULA <= 17.7345 crystal (see analogue part of the schematics)
 * [Amstrad CPC](https://www.cpcwiki.eu/imgs/6/68/464Schematic_new.png) - 4 MHz Z80 <= GA4007 <= 16Mhz crystal
 * MSX1 - 3.579 MHz <= ??? TMS9918/9928/9929 <= ???
 * [MSX2](https://hansotten.file-hunter.com/uploads/files/msxpccircuit.pd) - 3.579 MHz <= V9938 <= 21.328125
