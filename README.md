@@ -50,6 +50,9 @@ Browse [issues](https://github.com/rejunity/z80-open-silicon/issues).
 
 # Quick start
 
+First, take a look at the project overview [slide deck](https://docs.google.com/presentation/d/1-vcqAm9nMe9o_P5PAofOEgkbrVqfZs-Lbs7DuWj7h2o/edit#slide=id.p).
+
+Code:
 * You can find the top module in [src/tt_um_rejunity_z80.v](src/tt_um_rejunity_z80.v). It instantiates Z80 and adheres to [TinyTapeout constraints](https://tinytapeout.com/specs/gpio/) including multiplexing the output pins onto the 8 pins of TinyTapeout chip.
 * The core Verilog Z80 implementation is in [src/tv80](src/tv80) folder.
 * The configuration for [OpenROAD](https://theopenroadproject.org) synthesis and place-and-route flow is in the [src/config.tcl](src/config.tcl) file.
@@ -86,10 +89,14 @@ These machines are considerd as test-cases for hardware Z80 replacement:
 * [ZX Spectrum 48K](https://spectrumforeveryone.com/wp-content/uploads/2017/08/ZXSpectrumIssue2-Schematics.gif) - (interrupted) 3.5 MHz Z80 <= ULA <= 14MHz crystal
 * ZX Spectrum 128K -  (interrupted) 3.54690 MHz Z80 <= ULA <= ?? crystal
 * [Amstrad CPC](https://www.cpcwiki.eu/imgs/6/68/464Schematic_new.png) - 4 MHz Z80 <= GA4007 <= 16Mhz crystal
-* MSX1, MSX2 - 3.??
-* Sinclair ZX80, ZX81 - 3.25 MHz Z80 (NEC μPD780C-1)
+* MSX1 - 3.579 MHz <= ??? TMS9918/9928/9929 <= ???
+* [MSX2](https://hansotten.file-hunter.com/uploads/files/msxpccircuit.pd) - 3.579 MHz <= V9938 <= 21.328125
+* [MSX2](http://ebook.pldworld.com/_eBook/MSX/Schematics/YIS503.jpg) - 3.579 MHz <= [S3527](https://www.msx.org/wiki/Yamaha_S3527) <= V9938 <= 21.328125
+* SG-1000 [CPU sheet](https://wiki.console5.com/wiki/File:SG-1000_CPU,_RAM.png) [VDP sheet](https://wiki.console5.com/wiki/File:SG-1000_VDP.png) - 3.58 MHz Z80 <= TMS9918ANL (NTSC) <= 10.73863 MHz crystal
+* [Sega Master System](https://www.smspower.org/Development/SegaMasterSystemServiceManual) - 3.58 MHz Z80 <= VDP 315-5124 <= 10.738 MHz
 * [ColecoVision console](https://wiki.console5.com/wiki/File:Colecovision-Schematic---Audio,-Reset,-Clocks.png) - 3.57954 MHz Z80 <= /2 <= 7.15909 MHz crystal
 * TSR80 [CPU sheet](http://billr.incolor.com/trs80sch-sheet1of2-part1of5.GIF) [clock sheet](http://billr.incolor.com/trs80sch-sheet2of2-part1of5.GIF) - 1.774 MHz Z80 <= /6 <= 10.6445 MHz
+* Sinclair ZX80, ZX81 - 3.25 MHz Z80 (NEC μPD780C-1)
 
 # Z80
 
@@ -122,9 +129,8 @@ These machines are considerd as test-cases for hardware Z80 replacement:
 
 ## Documentation
 * [Z80 Datasheet](http://www.z80.info/zip/z80.pdf)
-* [Z80 Users Manual](https://baltazarstudios.com/webshare/A-Z80/Z80_CPU_Users_Manual_2004.pdf)
-* [Z80 Users Manual from Mostek](https://baltazarstudios.com/webshare/A-Z80/z80-mostek.pdf)
-* [Zilog Data Book](http://cini.classiccmp.org//pdf/Zilog/Zilog%20Data%20Book.PDF)
+* Zilog [Users Manual](https://baltazarstudios.com/webshare/A-Z80/Z80_CPU_Users_Manual_2004.pdf) and Mostek's [Users Manual](https://baltazarstudios.com/webshare/A-Z80/z80-mostek.pdf)
+* Zilog [Data Book](http://cini.classiccmp.org//pdf/Zilog/Zilog%20Data%20Book.PDF)
 * [All the information about Z80](http://www.z80.info)
 * [Undocumented instructions](https://baltazarstudios.com/webshare/A-Z80/z80-documented-v0.91.pdf)
 * [Opcode table](https://baltazarstudios.com/webshare/A-Z80/Z80-Opcode-Tables.pdf) and [timing](https://baltazarstudios.com/webshare/A-Z80/Z80-Instruction-List-with-T-states.pdf)
