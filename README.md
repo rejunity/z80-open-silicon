@@ -50,7 +50,7 @@ Browse [issues](https://github.com/rejunity/z80-open-silicon/issues).
 
 # Quick start
 
-First, take a look at the project overview [slide deck](https://docs.google.com/presentation/d/1-vcqAm9nMe9o_P5PAofOEgkbrVqfZs-Lbs7DuWj7h2o/edit#slide=id.p).
+First, take a look at the project [slide deck](https://docs.google.com/presentation/d/1-vcqAm9nMe9o_P5PAofOEgkbrVqfZs-Lbs7DuWj7h2o/edit#slide=id.p).
 
 Code:
 * You can find the top module in [src/tt_um_rejunity_z80.v](src/tt_um_rejunity_z80.v). It instantiates Z80 and adheres to [TinyTapeout constraints](https://tinytapeout.com/specs/gpio/) including multiplexing the output pins onto the 8 pins of TinyTapeout chip.
