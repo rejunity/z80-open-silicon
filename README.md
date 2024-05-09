@@ -159,6 +159,7 @@ These machines are considerd as test-cases for hardware Z80 replacement:
 
 ## Z80 Reverse Engineering
 * [Finding "traps" in Zilog Z80 CPU by Sergei Skorobogatov](https://www.cl.cam.ac.uk/~sps32/Z80proj/Z80_traps.pdf)
+* Comparing [Z80 to 6502 and ARM1](http://www.righto.com/2016/02/reverse-engineering-arm1-instruction.html)
 * [Z80 Instruction Register deciphered](https://baltazarstudios.com/z80-instruction-register-deciphered/)
 * [Z80 Tri-stated Data & Address bus gates](https://baltazarstudios.com/anatomy-z80-gate/)
 * [Z80 (un)documented behavior](https://baltazarstudios.com/zilog-z80-undocumented-behavior/)
