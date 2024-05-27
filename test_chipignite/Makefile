@@ -6,7 +6,7 @@ SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
 PROJECT_SOURCES = tv80/tv80_alu.v tv80/tv80_reg.v tv80/tv80_mcode.v tv80/tv80_core.v tv80/tv80s.v
-PROJECT_SOURCES += tt_um_rejunity_z80.v
+PROJECT_SOURCES += ci2406_z80.v
 
 ifneq ($(GATES),yes)
 
