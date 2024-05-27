@@ -76,6 +76,7 @@ module ci2406_z80(
     // 16 output address bus pins
     assign io_oeb[23:8]     = {16{1'b0}};       // 0 = Output
     // 8 bidirectional data bus pins
+
     assign io_oeb[31:24]    = {8{~data_oe}};    // 0 = Output | 1 = Input
     // 4 input control pins
     assign io_oeb[35:32]    = {4{1'b1}};        // 1 = Input
@@ -90,8 +91,18 @@ module ci2406_z80(
         .int_n   (io_in [32]),
         .nmi_n   (io_in [33]),
         .busrq_n (io_in [35]),
-        .di      (io_in [31:24]),
-        .dout    (io_out[31:24]),
+        // Z80 has peculiar data bus pin order, keep it to minimize wire crossing on the DIP40 PCB
+        // Also see: http://www.righto.com/2014/09/why-z-80s-data-pins-are-scrambled.html
+        //  D7 - io[29]
+        //  D6 - io[27]
+        //  D5 - io[26]
+        //  D4 - io[24]
+        //  D3 - io[25]
+        //  D2 - io[28]
+        //  D1 - io[31]
+        //  D0 - io[30]
+        .di      ({io_in [29], io_in [27], io_in [26], io_in [24], io_in [25], io_in [28], io_in [31], io_in [30]}),
+        .dout    ({io_out[29], io_out[27], io_out[26], io_out[24], io_out[25], io_out[28], io_out[31], io_out[30]}),
         .doe     (data_oe),
         .A       (io_out[23:8]),
         .halt_n  (io_out[0]),
