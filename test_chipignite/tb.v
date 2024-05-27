@@ -20,10 +20,10 @@ module tb ();
   wire [35:0] io_oeb;
 
   wire [3:0]  controls_in;
-  wire [7:0]  controls_out  = io_out[7:0];
+  wire [7:0]  controls_out  = {io_out[35:34], io_out[7], io_out[4:0]};
   wire [15:0] addr          = io_out[23:8];
 
-  assign io_in [35:32] = controls_in;
+  assign {io_in [33:32], io_in [6:5]} = controls_in;
 
   // Z80 has a peculiar order of the pins for the data bus
   //  <->     D4 | io[24]

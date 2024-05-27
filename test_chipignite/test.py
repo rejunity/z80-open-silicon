@@ -5,7 +5,7 @@ import cocotb
 from cocotb.clock import Clock
 from cocotb.triggers import ClockCycles, FallingEdge, RisingEdge
 
-BUS_READY = 0b1111 # not WAIT, not INT, not NMI, not BUSRQ
+BUS_READY = 0b1111      # not WAIT, not BUSRQ, not INT, not NMI
 OPCODE_NOP      = 0x00
 OPCODE_LDHL     = 0x21
 OPCODE_LDNNA    = 0x32
@@ -150,16 +150,19 @@ async def start_and_reset(dut):
 async def z80_step(z80, cycle, verbose=False):
     def read_controls():
         controls = [bit_n(z80.controls_out, n) for n in range(8)]
-        return dict(zip(['halt', 'busak', 'm1', 'mreq', 'ioreq', 'rd', 'wr', 'rfsh'], controls))
         #                  |                       41 io[7]  - 28| /RFSH  --> 
         #                  |                       33 io[2]  - 27| /M1    -->
         #                  |                                     |
         #                  |                                     |
         #                  |                                     |
         #       <--  /HALT |18 - io[0]  31         32 io[1]  - 23| /BUSAK -->
-        #       <--  /MREQ |19 - io[3]  34         37 io[6]  - 22| /WR    -->
-        #       <--  /IORQ |20 - io[4]  35         36 io[5]  - 21| /RD    -->
+        #       <--  /MREQ |19 - io[34] 13         35 io[4]  - 22| /WR    -->
+        #       <--  /IORQ |20 - io[35] 14         34 io[3]  - 21| /RD    -->
         #                  `-------------------------------------'
+        #
+        #                 io[0]   io[1]   io[2] io[3] io[4]  io[7]  io[34]   io[35]
+        return dict(zip(['halt', 'busak', 'm1', 'rd', 'wr', 'rfsh', 'mreq', 'ioreq'], controls))
+
     def read_data():
         if z80.data_oe.value != 0b1111_1111:
             return 'ZZ'
