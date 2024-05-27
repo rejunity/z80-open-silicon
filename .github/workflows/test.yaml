@@ -21,11 +21,11 @@ jobs:
 
       - name: Install Python packages
         shell: bash
-        run: pip install -r test/requirements.txt
+        run: pip install -r test_tinytapeout/requirements.txt
 
       - name: Run tests
         run: |
-          cd test
+          cd test_tinytapeout
           make clean
           make
           # make will return success even if the test fails, so check for failure in the results.xml
@@ -34,7 +34,7 @@ jobs:
       - name: Test Summary
         uses: test-summary/action@v2.3
         with:
-          paths: "test/results.xml"
+          paths: "test_tinytapeout/results.xml"
         if: always()
 
       - name: upload vcd
@@ -43,5 +43,5 @@ jobs:
         with:
           name: test-vcd
           path: |
-            test/tb.vcd
-            test/result.xml
+            test_tinytapeout/tb.vcd
+            test_tinytapeout/result.xml

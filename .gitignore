@@ -9,3 +9,11 @@ test/sim_build
 test/__pycache__/
 test/results.xml
 test/gate_level_netlist.v
+test_tinytapeout/sim_build
+test_tinytapeout/__pycache__/
+test_tinytapeout/results.xml
+test_tinytapeout/gate_level_netlist.v
+test_chipignite/sim_build
+test_chipignite/__pycache__/
+test_chipignite/results.xml
+test_chipignite/gate_level_netlist.v
