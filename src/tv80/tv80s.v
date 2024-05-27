@@ -26,7 +26,9 @@ module tv80s (/*AUTOARG*/
   // Outputs
   m1_n, mreq_n, iorq_n, rd_n, wr_n, rfsh_n, halt_n, busak_n, A, dout,
   // Inputs
-  reset_n, clk, wait_n, int_n, nmi_n, busrq_n, di, cen
+  reset_n, clk, wait_n, int_n, nmi_n, busrq_n, di, cen,
+  // Data bus state
+  write 
   );
 
   parameter Mode = 0;    // 0 => Z80, 1 => Fast Z80, 2 => 8080, 3 => GB
@@ -60,7 +62,7 @@ module tv80s (/*AUTOARG*/
 
   wire          intcycle_n;
   wire          no_read;
-  wire          write;
+  output        write;
   wire          iorq;
   reg [7:0]     di_reg;
   wire [6:0]    mcycle;

@@ -24,7 +24,7 @@ module ci2406_z80(
     input  wire [31:0]  custom_settings
 );
     wire z80_clk =  wb_clk_i;
-    wire ena =      1`b1;
+    wire ena =      1'b1;
 
     // I took ChipIgnite ASIC pinout as a reference from https://github.com/efabless/clear
     // Hope to map to Z80 pins with minimal wire crossing.
@@ -65,17 +65,20 @@ module ci2406_z80(
     //      VCC_3V3 xx --- vdda1, vdda2 [47,40,30,9]
     //      VCC_1V8 xx --- vccd, vccd1, vccd2 [63,49,18]
     
+    // @TODO: float A, D on reset
+    // @TODO: float A, D, MREQ, RD, WR, IORQ pins on BUSAK (Figure 10 BUS Request/Acknowledge Cycle)
 
     // 8 output control pins
-    assign io_oeb[7:0]      = {8{1'b0}};    // 0 = Output
-    wire wr_n = io_out[6];                  // /WR
+    assign io_oeb[7:0]      = {8{1'b0}};        // 0 = Output
     // 16 output address bus pins
-    assign io_oeb[23:8]     = {16{1'b0}};   // 0 = Output
+    assign io_oeb[23:8]     = {16{1'b0}};       // 0 = Output
     // 8 bidirectional data bus pins
-    assign io_oeb[31:24]    = {8{wr_n}};    // 0 = Output | 1 = Input
+    assign io_oeb[31:24]    = {8{~data_oe}};    // 0 = Output | 1 = Input
     // 4 input control pins
-    assign io_oeb[35:32]    = {4{1'b1}};    // 1 = Input
+    assign io_oeb[35:32]    = {4{1'b1}};        // 1 = Input
+    assign io_out[35:32]    = {4{1'b0}};        // Initialize otherwise undriven pins to 0
 
+    wire data_oe;
     z80 z80 (
         .clk     (z80_clk),
         .cen     (ena),
@@ -86,6 +89,7 @@ module ci2406_z80(
         .busrq_n (io_in [35]),
         .di      (io_in [31:24]),
         .dout    (io_out[31:24]),
+        .doe     (data_oe),
         .A       (io_out[23:8]),
         .halt_n  (io_out[0]),
         .busak_n (io_out[1]),
@@ -93,7 +97,7 @@ module ci2406_z80(
         .mreq_n  (io_out[3]),
         .iorq_n  (io_out[4]),
         .rd_n    (io_out[5]),
-        .wr_n    (wr_n),
+        .wr_n    (io_out[6]),
         .rfsh_n  (io_out[7])
     );
 endmodule
@@ -109,6 +113,7 @@ module z80 (
 
     input  wire [7:0]   di,
     output wire [7:0]   dout,
+    output wire         doe,
 
     output wire [15:0]  A,
     output wire         m1_n,
@@ -143,7 +148,8 @@ module z80 (
         .busak_n (busak_n),
         .A (A),
         .di (di),
-        .dout (dout)
+        .dout (dout),
+        .write (doe)
     );
 
 endmodule
