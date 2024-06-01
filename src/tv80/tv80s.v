@@ -24,7 +24,7 @@
 
 module tv80s (/*AUTOARG*/
   // Outputs
-  m1_n, mreq_n, iorq_n, rd_n, wr_n, rfsh_n, halt_n, busak_n, A, dout,
+  m1_n, mreq_n, iorq_n, rd_n, wr_n, rfsh_n, halt_n, busak_n, A, dout, write,
   // Inputs
   reset_n, clk, wait_n, int_n, nmi_n, busrq_n, di, cen
   );
@@ -60,7 +60,7 @@ module tv80s (/*AUTOARG*/
 
   wire          intcycle_n;
   wire          no_read;
-  wire          write;
+  output wire   write;
   wire          iorq;
   reg [7:0]     di_reg;
   wire [6:0]    mcycle;

@@ -24,18 +24,18 @@ async def test__NOP(dut):
     for i in range(32):
         controls, addr = await z80_step(dut, z80_cycle, verbose=True)
 
-        if (z80_cycle-1) % cycles_per_instr == 0 or \
-           (z80_cycle-1) % cycles_per_instr == 1:
+        if z80_cycle % cycles_per_instr == 0 or \
+           z80_cycle % cycles_per_instr == 1:
             assert controls['m1'] == 1
-        if (z80_cycle-1) % cycles_per_instr == 1:
+        if z80_cycle % cycles_per_instr == 1:
             assert controls['mreq'] == 1
             assert controls['rd'] == 1
         assert controls['wr'] == 0
         assert controls['ioreq'] == 0
         assert controls['halt'] == 0
         assert controls['busak'] == 0
-        if z80_cycle > 1:
-            assert addr == (z80_cycle - 1) // 4 # Running NOPs, every 4 cycles address increases
+        if z80_cycle < cycles_per_instr-1:
+            assert addr == z80_cycle // 4 # Running NOPs, every 4 cycles address increases
         z80_cycle += 1
                
 
@@ -54,12 +54,12 @@ async def test__LD_HL2121(dut):
     for i in range(32):
         controls, addr = await z80_step(dut, z80_cycle, verbose=True)
 
-        if (z80_cycle-1) % cycles_per_instr == 0 or \
-           (z80_cycle-1) % cycles_per_instr == 1:
+        if z80_cycle % cycles_per_instr == 0 or \
+           z80_cycle % cycles_per_instr == 1:
             assert controls['m1'] == 1
-        if (z80_cycle-1) % cycles_per_instr == 1 or \
-           (z80_cycle-1) % cycles_per_instr == 5 or \
-           (z80_cycle-1) % cycles_per_instr == 8:
+        if z80_cycle % cycles_per_instr == 1 or \
+           z80_cycle % cycles_per_instr == 5 or \
+           z80_cycle % cycles_per_instr == 8:
             assert controls['mreq'] == 1
             assert controls['rd'] == 1
         assert controls['wr'] == 0
@@ -81,22 +81,79 @@ async def start_and_reset(dut):
     dut.ui_in.value = 0
     dut.uio_in.value = 0
     dut.rst_n.value = 0
-    await ClockCycles(dut.clk, 8)
+    await ClockCycles(dut.clk, 16)
     dut.rst_n.value = 1
+    await ClockCycles(dut.clk, 1)
 
 async def z80_step(z80, cycle, verbose=False):
     # 1st cycle --- control signals {m1_n, mreq_n, iorq_n, rd_n, wr_n, rfsh_n, halt_n, busak_n}
     # 2nd cycle --- {A0 - A7}
     # 3rd cycle --- repeated control signals
     # 4th cycle --- {A8 - A15}
+    # z80.ena.value = 1
+    # z80.ui_in.value = BUS_READY | 0b0000_0000
+    # await ClockCycles(z80.clk, 1)
+    # addr = z80.uo_out.value
+
+    # z80.ena.value = 0
+    # z80.ui_in.value = BUS_READY | 0b0100_0000
+    # await ClockCycles(z80.clk, 1)
+    # addr = addr | z80.uo_out.value << 8
+
+
+
+
+
+
+    z80.ui_in.value = BUS_READY | 0b1000_0000
     await ClockCycles(z80.clk, 1)
     controls = z80.uo_out.value
-    controls = [int(not bit(controls, n)) for n in range(8)]
-    controls = dict(zip(['m1', 'mreq', 'ioreq', 'rd', 'wr', 'rfsh', 'halt', 'busak'], controls))
+    z80.ena.value = 0
+    z80.ui_in.value = BUS_READY | 0b0000_0000
     await ClockCycles(z80.clk, 1)
     addr = z80.uo_out.value
-    await ClockCycles(z80.clk, 2)
+    z80.ui_in.value = BUS_READY | 0b0100_0000
+    await ClockCycles(z80.clk, 1)
     addr = addr | z80.uo_out.value << 8
+    z80.ena.value = 1
+
+
+    # z80.ui_in.value = BUS_READY | 0b0000_0000
+    # await ClockCycles(z80.clk, 1)
+    # addr = z80.uo_out.value
+    # z80.ena.value = 0
+    # z80.ui_in.value = BUS_READY | 0b1000_0000
+    # await ClockCycles(z80.clk, 1)
+    # controls = z80.uo_out.value
+    # z80.ui_in.value = BUS_READY | 0b0100_0000
+    # await ClockCycles(z80.clk, 1)
+    # addr = addr | z80.uo_out.value << 8
+    # z80.ena.value = 1
+
+
+
+
+
+
+    # z80.ena.value = 1
+    # z80.ui_in.value = BUS_READY | 0b0000_0000
+    # await ClockCycles(z80.clk, 1)
+    # addr = z80.uo_out.value
+
+    # z80.ena.value = 0
+    # z80.ui_in.value = BUS_READY | 0b0100_0000
+    # await ClockCycles(z80.clk, 1)
+    # addr = addr | z80.uo_out.value << 8
+
+    # z80.ui_in.value = BUS_READY | 0b1000_0000
+    # await ClockCycles(z80.clk, 1)
+    # controls = z80.uo_out.value
+    # controls = [int(not bit(controls, n)) for n in range(8)]
+    # controls = dict(zip(['m1', 'mreq', 'ioreq', 'rd', 'wr', 'rfsh', 'halt', 'busak'], controls))
+    # z80.ena.value = 1
+
+    controls = [int(not bit(controls, n)) for n in range(8)]
+    controls = dict(zip(['m1', 'mreq', 'ioreq', 'rd', 'wr', 'rfsh', 'halt', 'busak'], controls))
 
     if (verbose):
         print (f"clk: {cycle:3d}  {controls}  addr:0x{addr:04X}".replace("'", "") \

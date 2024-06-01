@@ -18,35 +18,42 @@ module tt_um_rejunity_z80 (
 
     // We have to multiplex the 16 bits of (A) address bus and 8 control signals into
     // the 8 output pins that are available in TinyTapeout.
-    //
-    // 1) TinyTapeout clock has to be divided by 4 to get the Z80 clock and
-    // 2) Output pins see the following sequence:
-    //   1st cycle --- control signals {m1_n, mreq_n, iorq_n, rd_n, wr_n, rfsh_n, halt_n, busak_n}
-    //   2nd cycle --- {A0 - A7}
-    //   3rd cycle --- repeated control signals
-    //   4th cycle --- {A8 - A15}
-
-    reg [1:0] clk_counter;
-    always @(posedge clk)
-        clk_counter <= (rst_n) ? clk_counter + 1 : 0;
-    wire z80_clk = (rst_n) ? clk_counter[1:0] == 0: clk; // Z80 clock is pulsed once every 4 TinyTapeout clock cycles
-
     wire  [7:0] ctrl_signals;
     wire [15:0] addr_bus;
-    assign uo_out = (clk_counter[0] == 0) ? ctrl_signals :
-                    (clk_counter[1] == 0) ? addr_bus[7:0] :
+
+    // Use mux_control to select between the address bus and control signals
+    //   [00] --- {A0 - A7} 
+    //   [01] --- {A8 - A15}
+    //   [1?] --- control signals {m1_n, mreq_n, iorq_n, rd_n, wr_n, rfsh_n, halt_n, busak_n}
+
+    // reg [1:0] clk_counter;
+    // always @(posedge clk)
+    //     clk_counter <= (rst_n) ? clk_counter + 1 : 0;
+    // wire z80_clk = (rst_n) ? clk_counter[1:0] == 0: clk; // Z80 clock is pulsed once every 4 TinyTapeout clock cycles
+
+    // assign uo_out = (clk_counter[0] == 0) ? ctrl_signals :
+    //                 (clk_counter[1] == 0) ? addr_bus[7:0] :
+    //                                         addr_bus[15:8];
+
+    wire z80_clk = clk;
+    wire [1:0] mux_control = ui_in[7:6];
+    assign uo_out = (mux_control[1] == 1) ? ctrl_signals :
+                    (mux_control[0] == 0) ? addr_bus[7:0] :
                                             addr_bus[15:8];
+
+    // reg [7:0] mux_out;
+    // assign uo_out = mux_out;
     // always @(*) begin
-    //     case(clk_counter[1:0])
-    //         2'd0:  assign uo_out = ctrl_signals;
-    //         2'd1:  assign uo_out = addr_bus[7:0];
-    //         2'd2:  assign uo_out = ctrl_signals;
-    //         2'd3:  assign uo_out = addr_bus[15:8];
+    //     case(ui_in[7:6])
+    //         2'd0:  mux_out = addr_bus[7:0];
+    //         2'd1:  mux_out = addr_bus[15:8];
+    //         2'd2:  mux_out = ctrl_signals;
+    //         2'd3:  mux_out = ctrl_signals;
     //     endcase
     // end
     
-    wire wr = ~ctrl_signals[4];
-    assign uio_oe  = {8{wr}}; // (active high: 0=input, 1=output)
+    wire doe; // Data Output Enable
+    assign uio_oe  = {8{doe}}; // (active high: 0=input, 1=output)
 
     z80 z80 (
         .clk     (z80_clk),
@@ -58,6 +65,7 @@ module tt_um_rejunity_z80 (
         .busrq_n (ui_in[3]),
         .di      (uio_in),
         .dout    (uio_out),
+        .doe     (doe),
         .A       (addr_bus),
         .m1_n    (ctrl_signals[0]),
         .mreq_n  (ctrl_signals[1]),
@@ -81,6 +89,7 @@ module z80 (
 
     input  wire [7:0]   di,
     output wire [7:0]   dout,
+    output wire         doe,
 
     output wire [15:0]  A,
     output wire         m1_n,
@@ -115,7 +124,8 @@ module z80 (
         .busak_n (busak_n),
         .A (A),
         .di (di),
-        .dout (dout)
+        .dout (dout),
+        .write (doe) 
     );
 
 endmodule
