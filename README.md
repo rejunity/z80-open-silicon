@@ -35,13 +35,13 @@ Below is the image of [GDSII](https://en.wikipedia.org/wiki/GDSII) integrated ci
 ## Plan
 - [x] Submit with [Tiny Tapeout 07](https://app.tinytapeout.com/projects/668)
 - [x] Write basic documentation for Tiny Tapeout 07: [docs/info.md](docs/info.md)
+- [ ] Tapeout with ChipIgnite in QFN64 package, create a PCB adapter from QFN64 to DIP40
 - [ ] Add thorough tests for all Z80 instructions including the 'illegal' ones [ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) to a testbench
 - [ ] Add thorough timing test of the input/output signals
 - [ ] Integrate the netlist based Z80 core into the testbench for ultimate validation
 - [ ] Compare different implementations: Verilog core [A-Z80](https://github.com/gdevic/A-Z80), Netlist based [Z80Explorer](https://github.com/gdevic/Z80Explorer), etc
-- [ ] Tapeout with ChipIgnite in QFN64 package, create a PCB adapter from QFN64 to DIP40
-- [ ] Tapeout with DIP40 package
-- [ ] Create gate-level layouts that would resemble the original Z80 layout, see the original [chip dies](#Z80-Die-shots) below. Zilog designed Z80 by manually placing each transistor by hand.
+- [ ] Create gate-level layouts that would resemble the original Z80 layout, see the original [chip dies](#Z80-Die-shots) below. Zilog designed Z80 by manually placing each transistor by - - [ ] Tapeout with DIP40 package
+hand.
 
 # How to Contribute
 Join the [Tiny Tapeout Discord](https://tinytapeout.com/discord) forum.
