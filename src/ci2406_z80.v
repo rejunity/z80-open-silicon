@@ -242,13 +242,13 @@ module ci2406_z80(
 
         .A       ({io_out[21:11], io_out[6], io_out[7], io_out[8], io_out[10], io_out[9]}),
 
-                                                    io[ 5]| /RFSH  -->
-                                                    io[*1]| /M1    -->
-                                                     ...
-         <--  /HALT |io[32]                         io[*0]| /BUSAK -->
-         <--  /MREQ |io[33]                         io[ 3]| /WR    -->
-         <--  /IORQ |io[34]                         io[ 2]| /RD    -->
-                    `-------------------------------------'
+    //                                                 io[ 5]| /RFSH  -->
+    //                                                 io[*1]| /M1    -->
+    //                                                  ...
+    //      <--  /HALT |io[32]                         io[*0]| /BUSAK -->
+    //      <--  /MREQ |io[33]                         io[ 3]| /WR    -->
+    //      <--  /IORQ |io[34]                         io[ 2]| /RD    -->
+    //                 `-------------------------------------'
 
         .halt_n  (io_out[32]),
         .busak_n (io_out[ 0]),
