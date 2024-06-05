@@ -15,6 +15,7 @@ module tb ();
   // Wire up the inputs and outputs:
   reg clk;
   reg rst_n;
+  reg [31:0] custom_settings;
   wire [35:0] io_in;
   wire [35:0] io_out;
   wire [35:0] io_oeb;
@@ -78,7 +79,9 @@ module tb ();
       .rst_n  (rst_n),    // not reset
       .io_in  (io_in),
       .io_out (io_out),
-      .io_oeb (io_oeb)
+      .io_oeb (io_oeb),
+
+      .custom_settings(custom_settings)
   );
 
 endmodule
