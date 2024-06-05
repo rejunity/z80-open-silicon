@@ -5,8 +5,8 @@ import cocotb
 from cocotb.clock import Clock
 from cocotb.triggers import ClockCycles, FallingEdge, RisingEdge
 
-                        #    io[3]    io[6]    io[32]   io[33]
-BUS_READY = 0b1111      # not BUSRQ, not WAIT, not INT, not NMI
+                        #   io[4]    io[30]    io[31]   io[35]
+BUS_READY = 0b1111      # not WAIT, not NMI, not INT, not BUSRQ
 OPCODE_NOP      = 0x00
 OPCODE_LDHL     = 0x21
 OPCODE_LDNNA    = 0x32
@@ -151,18 +151,18 @@ async def start_and_reset(dut):
 async def z80_step(z80, cycle, verbose=False):
     def read_controls():
         controls = [bit_n(z80.controls_out, n) for n in range(8)]
-        #                  |                          io[7]  - 28| /RFSH  --> 
-        #                  |                          io[2]  - 27| /M1    -->
-        #                  |                                     |
-        #                  |                                     |
-        #                  |                                     |
-        #       <--  /HALT |18 - io[0]                io[1]  - 23| /BUSAK -->
-        #       <--  /MREQ |19 - io[34]               io[5]  - 22| /WR    -->
-        #       <--  /IORQ |20 - io[35]               io[4]  - 21| /RD    -->
-        #                  `-------------------------------------'
-        #
-        #                 io[0]   io[1]   io[2] io[4] io[5]  io[7]  io[34]   io[35]
-        return dict(zip(['halt', 'busak', 'm1', 'rd', 'wr', 'rfsh', 'mreq', 'ioreq'], controls))
+
+
+        #                                             io[ 5]| /RFSH  -->
+        #                                             io[*1]| /M1    -->
+        #                                             ...
+        # <--  /HALT |io[32]                         io[*0]| /BUSAK -->
+        # <--  /MREQ |io[33]                         io[ 3]| /WR    -->
+        # <--  /IORQ |io[34]                         io[ 2]| /RD    -->
+        #             `-------------------------------------'
+
+        #                 io[0]  io[1] io[2] io[3]   io[5]  io[32]  io[33]   io[34]
+        return dict(zip(['busak', 'm1', 'rd', 'wr', 'rfsh', 'halt', 'mreq', 'ioreq'], controls))
 
     def read_data():
         if z80.data_oe.value != 0b1111_1111:
