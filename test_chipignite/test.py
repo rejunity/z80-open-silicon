@@ -18,6 +18,7 @@ async def test__RESET(dut):
     dut._log.info("Test RESET sequence")
     dut._log.info("Reset")
     dut.io_in.value = 0
+    dut.custom_settings.value = 0b00 # [long MREQ+IORQ, early RD+MREW+IORQ] WR always normal
     dut.rst_n.value = 0
     await ClockCycles(dut.clk, 2)
     for z80_cycle in range(-4, 2):

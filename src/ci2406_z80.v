@@ -259,7 +259,7 @@ module ci2406_z80(
         .wr_n    (io_out[ 3]),
         .rfsh_n  (io_out[ 5]),
         
-        .early_signals(custom_settings[0])
+        .early_signals(custom_settings)
     );
 endmodule
 
@@ -286,7 +286,7 @@ module z80 (
     output wire         halt_n,
     output wire         busak_n,
 
-    input wire          early_signals
+    input wire[1:0]     early_signals
 );
 
     wire         normal_mreq_n;
@@ -299,10 +299,19 @@ module z80 (
     wire         early_rd_n;
     wire         early_wr_n;
 
-    assign mreq_n = early_signals ? early_mreq_n : normal_mreq_n;
-    assign iorq_n = early_signals ? early_iorq_n : normal_iorq_n;
-    assign rd_n   = early_signals ? early_rd_n   : normal_rd_n;
-    assign wr_n   = early_signals ? early_wr_n   : normal_wr_n;
+    // assign mreq_n = early_signals ? early_mreq_n : normal_mreq_n;
+    // assign iorq_n = early_signals ? early_iorq_n : normal_iorq_n;
+    // assign rd_n   = early_signals ? early_rd_n   : normal_rd_n;
+    // assign wr_n   = early_signals ? early_wr_n   : normal_wr_n;
+
+    assign mreq_n = early_signals[1] ?
+                    (rfsh_n ? (early_mreq_n & normal_mreq_n) : early_mreq_n) :
+                    early_signals[0] ? early_mreq_n : normal_mreq_n;
+
+    assign iorq_n = early_signals[1] ? (early_iorq_n & normal_iorq_n) :
+                    early_signals[0] ? early_iorq_n : normal_iorq_n;
+    assign rd_n   = early_signals[0] ? early_rd_n : normal_rd_n;
+    assign wr_n   =                                 normal_wr_n;
 
     tv80s #(
         .Mode(0),   // Z80 mode
