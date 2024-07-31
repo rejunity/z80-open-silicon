@@ -5,7 +5,7 @@ On April 15 of 2024 Zilog has [announced End-of-Life](https://www.mouser.com/PCN
 
 It is a time for open-source and hardware preservation community to step in with a Free and Open Source Silicon (FOSS) replacement for Zilog Z80.
 
-**GOAL: To develop a drop-in Z80 replacement in 8-bit home computers such as [ZX Spectrum](https://www.spectrumforeveryone.co.uk/technical/zx-spectrum-pcb-schematics-layout/).**
+**GOAL: To develop a drop-in Z80 replacement in 8-bit home computers such as [ZX Spectrum](https://www.spectrumforeveryone.co.uk/technical/zx-spectrum-pcb-schematics-layout/) and recent DYI computer kits such as [RC2014](https://rc2014.co.uk).**
 
 The **first** fabrication of **FOSS clone of Z80** is scheduled for **June of 2024**!
 
@@ -97,6 +97,12 @@ These machines are considerd as test-cases for hardware Z80 replacement:
 * [ColecoVision console](https://wiki.console5.com/wiki/File:Colecovision-Schematic---Audio,-Reset,-Clocks.png) - 3.57954 MHz Z80 <= /2 <= 7.15909 MHz crystal
 * TSR80 [CPU sheet](http://billr.incolor.com/trs80sch-sheet1of2-part1of5.GIF) [clock sheet](http://billr.incolor.com/trs80sch-sheet2of2-part1of5.GIF) - 1.774 MHz Z80 <= /6 <= 10.6445 MHz
 * Sinclair ZX80, ZX81 - 3.25 MHz Z80 (NEC μPD780C-1)
+
+Recent DYI computer kits are also perfect test-cases for Z80 FOSS:
+* [RC2014 modular computer](https://rc2014.co.uk) - 8K ROM, 32K RAM, runs at 7.3728 MHz
+    * [Small Computer Central (SCC) / RCBus extended version of RC2014](https://smallcomputercentral.com)
+* [Zeal 8-bit Computer](https://zeal8bit.com) - 32K ROM, from 128KB up 512KB of RAM, runs at 10 MHz
+* [LiNC80 microcomputer kit](https://linc.no/products/linc80-sbc1/) - 16K/64K ROM, 64K RAM, runs at 7.3728 MHz
 
 # Z80
 
