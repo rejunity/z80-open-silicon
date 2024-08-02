@@ -5,7 +5,7 @@ On April 15 of 2024 Zilog has [announced End-of-Life](https://www.mouser.com/PCN
 
 It is a time for open-source and hardware preservation community to step in with a Free and Open Source Silicon (FOSS) replacement for Zilog Z80.
 
-**GOAL: To develop a drop-in Z80 replacement in 8-bit home computers such as [ZX Spectrum](https://www.spectrumforeveryone.co.uk/technical/zx-spectrum-pcb-schematics-layout/) and recent DYI computer kits such as [RC2014](https://rc2014.co.uk).**
+**GOAL: To develop a drop-in Z80 replacement in 8-bit home computers such as [ZX Spectrum](https://www.spectrumforeveryone.co.uk/technical/zx-spectrum-pcb-schematics-layout/) and recent DIY computer kits such as [RC2014](https://rc2014.co.uk).**
 
 The **first** fabrication of **FOSS clone of Z80** is scheduled for **June of 2024**!
 
