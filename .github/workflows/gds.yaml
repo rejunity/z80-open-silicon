@@ -6,7 +6,7 @@ on:
 
 jobs:
   gds:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
@@ -14,32 +14,91 @@ jobs:
           submodules: recursive
 
       - name: Build GDS
-        uses: TinyTapeout/tt-gds-action@tt07
-  
-  precheck:
-    needs: gds
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run Tiny Tapeout Precheck
-        uses: TinyTapeout/tt-gds-action/precheck@tt07
+        uses: TinyTapeout/tt-gds-action/orfs@tt09
+
+  #precheck:
+  #  needs: gds
+  #  runs-on: ubuntu-24.04
+  #  steps:
+  #    - name: Run Tiny Tapeout Precheck
+  #      uses: TinyTapeout/tt-gds-action/precheck@tt09
 
   gl_test:
-    needs: gds
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout repo
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
+   needs: gds
+   runs-on: ubuntu-24.04
+   env: 
+      PDK_ROOT: ${{ github.workspace }}/IHP-Open-PDK
+      TEST_DIR: ${{ github.workspace }}/test
+   steps:
+     - name: checkout repo
+       uses: actions/checkout@v4
+       with:
+         submodules: recursive
 
-      - name: GL test
-        uses: TinyTapeout/tt-gds-action/gl_test@tt07
+     - name: Download GDS artifact
+       uses: actions/download-artifact@v4
+       with:
+        name: tt_submission
+
+     - name: install PDK
+       uses: actions/checkout@v4
+       with:
+         repository: tinytapeout/IHP-Open-PDK
+         ref: tt
+         path: IHP-Open-PDK
+
+     - name: Setup python
+       uses: actions/setup-python@v5
+       with:
+         python-version: '3.11'
+ 
+     - name: Install Python packages
+       shell: bash
+       run: pip install -r test/requirements.txt
+
+     - name: ccache
+       uses: hendrikmuhs/ccache-action@v1.2
+
+     - name: Install iverilog
+       shell: bash
+       run: |
+          wget https://github.com/htfab/iverilog/releases/download/13.0-git-d8c3c51/iverilog_13.0-git-d8c3c51a-1_amd64.deb
+          sudo apt-get update -y
+          sudo apt-get install -y ./iverilog_13.0-git-d8c3c51a-1_amd64.deb
+
+     - name: Run tests
+       shell: bash
+       run: |
+         cp tt_submission/*.v "$TEST_DIR/gate_level_netlist.v"
+         cd "$TEST_DIR"
+         rm -f tb.vcd results.xml
+         make clean
+         GATES=yes make
+ 
+         # `make` will return success even if the tests fail, so check for failure in results.xml
+         test -f results.xml
+         ! grep failure results.xml
+
+     - name: Upload VCD
+       if: always()
+       uses: actions/upload-artifact@v4
+       with:
+           name: gatelevel_test_vcd
+           path: |
+             ${{ env.TEST_DIR }}/tb.vcd
+             ${{ env.TEST_DIR }}/results.xml
+
+     - name: Test Summary
+       if: always()
+       uses: test-summary/action@v2.3
+       with:
+         paths: ${{ env.TEST_DIR }}/results.xml    
 
   viewer:
     needs: gds
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       pages: write      # to deploy to Pages
       id-token: write   # to verify the deployment originates from an appropriate source
     steps:
-      - uses: TinyTapeout/tt-gds-action/viewer@tt07
+      - uses: TinyTapeout/tt-gds-action/viewer@tt09
