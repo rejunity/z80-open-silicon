@@ -26,21 +26,11 @@ module tt_um_rejunity_z80 (
     //   [01] --- {A8 - A15}
     //   [1?] --- control signals {m1_n, mreq_n, iorq_n, rd_n, wr_n, rfsh_n, halt_n, busak_n}
 
-    // reg [1:0] clk_counter;
-    // always @(posedge clk)
-    //     clk_counter <= (rst_n) ? clk_counter + 1 : 0;
-    // wire z80_clk = (rst_n) ? clk_counter[1:0] == 0: clk; // Z80 clock is pulsed once every 4 TinyTapeout clock cycles
-
-    // assign uo_out = (clk_counter[0] == 0) ? ctrl_signals :
-    //                 (clk_counter[1] == 0) ? addr_bus[7:0] :
-    //                                         addr_bus[15:8];
-
     wire z80_clk = clk;
     wire [1:0] mux_control = ui_in[7:6];
     assign uo_out = (mux_control[1] == 1) ? ctrl_signals :
                     (mux_control[0] == 0) ? addr_bus[7:0] :
                                             addr_bus[15:8];
-
     // reg [7:0] mux_out;
     // assign uo_out = mux_out;
     // always @(*) begin
