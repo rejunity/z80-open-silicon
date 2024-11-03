@@ -31,8 +31,8 @@ pinout:
   ui[3]: "/BUSRQ"
   ui[4]: ""
   ui[5]: ""
-  ui[6]: ""
-  ui[7]: ""
+  ui[6]: "MUX -- address lo/hi bits on the output pins"
+  ui[7]: "MUX -- control signals on the output pins"
 
   # Outputs
   uo[0]: "/M1, A0, A8" 
