@@ -60,15 +60,6 @@
 
   "FP_PDN_VPITCH": 38.87,
 
-  "//": "Use alternative efabless decap cells to solve LI density issue",
-  "DECAP_CELL": [
-    "sky130_fd_sc_hd__decap_3",
-    "sky130_fd_sc_hd__decap_4",
-    "sky130_fd_sc_hd__decap_6",
-    "sky130_fd_sc_hd__decap_8",
-    "sky130_ef_sc_hd__decap_12"
-  ],
-
   "//": "Clock",
   "RUN_CTS": 1,
 
