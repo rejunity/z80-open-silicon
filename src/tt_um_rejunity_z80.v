@@ -31,16 +31,6 @@ module tt_um_rejunity_z80 (
     assign uo_out = (mux_control[1] == 1) ? ctrl_signals :
                     (mux_control[0] == 0) ? addr_bus[7:0] :
                                             addr_bus[15:8];
-    // reg [7:0] mux_out;
-    // assign uo_out = mux_out;
-    // always @(*) begin
-    //     case(ui_in[7:6])
-    //         2'd0:  mux_out = addr_bus[7:0];
-    //         2'd1:  mux_out = addr_bus[15:8];
-    //         2'd2:  mux_out = ctrl_signals;
-    //         2'd3:  mux_out = ctrl_signals;
-    //     endcase
-    // end
     
     wire doe; // Data Output Enable
     assign uio_oe  = {8{doe}}; // (active high: 0=input, 1=output)
