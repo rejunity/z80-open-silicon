@@ -31,6 +31,16 @@ module tt_um_rejunity_z80 (
     assign uo_out = (mux_control[1] == 1) ? ctrl_signals :
                     (mux_control[0] == 0) ? addr_bus[7:0] :
                                             addr_bus[15:8];
+
+    // Use early_signals_control to select half-cycle prolonged control signals
+    //   [00] --- MREQ, IORQ, RD are short - 1 cycle
+    //   [01] --- MREQ, IORQ, RD start 0.5 cycle earlier
+    //   [10] --- MREQ, IORQ are 1.5 cycle long and start earlier
+    //            RD is 1 cycle, but starts half cycle earlier
+    //   [11] --- MREQ, IORQ, RD are 1.5 cycle long 
+    //            and start 0.5 cycles earlier
+
+    wire [1:0] early_signals_control = ui_in[5:4];
     
     wire doe; // Data Output Enable
     assign uio_oe  = {8{doe}}; // (active high: 0=input, 1=output)
@@ -54,7 +64,9 @@ module tt_um_rejunity_z80 (
         .wr_n    (ctrl_signals[4]),
         .rfsh_n  (ctrl_signals[5]),
         .halt_n  (ctrl_signals[6]),
-        .busak_n (ctrl_signals[7])
+        .busak_n (ctrl_signals[7]),
+
+        .early_signals(early_signals_control)
     );
 endmodule
 
@@ -79,8 +91,34 @@ module z80 (
     output wire         wr_n,
     output wire         rfsh_n,
     output wire         halt_n,
-    output wire         busak_n
+    output wire         busak_n,
+
+    input wire[1:0]     early_signals
 );
+    wire         normal_mreq_n;
+    wire         normal_iorq_n;
+    wire         normal_rd_n;
+    wire         normal_wr_n;
+
+    wire         early_mreq_n;
+    wire         early_iorq_n;
+    wire         early_rd_n;
+    wire         early_wr_n;
+
+    assign mreq_n = early_signals[1] ? (rfsh_n ? (early_mreq_n & normal_mreq_n) : early_mreq_n) :
+                    early_signals[0] ?   early_mreq_n :
+                                        normal_mreq_n;
+
+    assign iorq_n = early_signals[1] ? (early_iorq_n & normal_iorq_n) :
+                    early_signals[0] ?   early_iorq_n :
+                                        normal_iorq_n;
+
+    assign rd_n = (early_signals == 2'b00) ? normal_rd_n:
+                  (early_signals == 2'b01) ?  early_rd_n:
+                  (early_signals == 2'b10) ?  early_rd_n:
+                              (early_rd_n & normal_rd_n);
+
+    assign wr_n   =                     normal_wr_n;
 
     tv80s #(
         .Mode(0),   // Z80 mode
@@ -95,10 +133,14 @@ module z80 (
         .nmi_n (nmi_n),
         .busrq_n (busrq_n),
         .m1_n (m1_n),
-        .mreq_n (mreq_n),
-        .iorq_n (iorq_n),
-        .rd_n (rd_n),
-        .wr_n (wr_n),
+        .mreq_n (normal_mreq_n),
+        .iorq_n (normal_iorq_n),
+        .rd_n (normal_rd_n),
+        .wr_n (normal_wr_n),
+        .early_mreq_n (early_mreq_n),
+        .early_iorq_n (early_iorq_n),
+        .early_rd_n (early_rd_n),
+        .early_wr_n (early_wr_n),
         .rfsh_n (rfsh_n),
         .halt_n (halt_n),
         .busak_n (busak_n),
