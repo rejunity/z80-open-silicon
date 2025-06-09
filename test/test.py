@@ -5,7 +5,9 @@ import cocotb
 from cocotb.clock import Clock
 from cocotb.triggers import ClockCycles
 
-BUS_READY = 0b0000_1111 # not WAIT, not INT, not NMI, not BUSRQ
+
+EARLY_SIGNALS = 0b00_11_0000 # [..11....] early and 1.5 cycles long MREQ, IORQ, RD
+BUS_READY = EARLY_SIGNALS | 0b0000_1111 # not WAIT, not INT, not NMI, not BUSRQ
 OPCODE_NOP  = 0x00
 OPCODE_LDHL = 0x21
 

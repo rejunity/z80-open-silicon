@@ -36,9 +36,9 @@ module tt_um_rejunity_z80 (
     //   [00] --- MREQ, IORQ, RD are short - 1 cycle
     //   [01] --- MREQ, IORQ, RD start 0.5 cycle earlier
     //   [10] --- MREQ, IORQ are 1.5 cycle long and start earlier
-    //            RD is 1 cycle, but starts half cycle earlier
-    //   [11] --- MREQ, IORQ, RD are 1.5 cycle long 
-    //            and start 0.5 cycles earlier
+    //            RD is 1 cycle and does not start early (same as 00)
+    //   [11] --- MREQ, IORQ, RD are 1.5 cycle long
+    //            and all start 0.5 cycles earlier
 
     wire [1:0] early_signals_control = ui_in[5:4];
     
@@ -115,7 +115,7 @@ module z80 (
 
     assign rd_n = (early_signals == 2'b00) ? normal_rd_n:
                   (early_signals == 2'b01) ?  early_rd_n:
-                  (early_signals == 2'b10) ?  early_rd_n:
+                  (early_signals == 2'b10) ? normal_rd_n:
                               (early_rd_n & normal_rd_n);
 
     assign wr_n   =                     normal_wr_n;
