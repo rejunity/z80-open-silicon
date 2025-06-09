@@ -29,8 +29,8 @@ pinout:
   ui[1]: "/INT"
   ui[2]: "/NMI"
   ui[3]: "/BUSRQ"
-  ui[4]: "CONFIG -- 00: short MREQ IORQ RD; 01: short MREQ IORQ RD starting early"
-  ui[5]: "CONFIG -- 10: long MREQ IORQ;     11: long MREQ IORQ RD starting early"
+  ui[4]: "CONFIG -- 00: short MREQ IORQ RD / 01: short MREQ IORQ RD starts early"
+  ui[5]: "CONFIG -- 10: long MREQ IORQ / 11: long MREQ IORQ RD starts early"
   ui[6]: "MUX -- address lo/hi bits on the output pins"
   ui[7]: "MUX -- control signals on the output pins"
 
