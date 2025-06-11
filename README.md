@@ -1,47 +1,61 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg)
 
-# Announcement
-On April 15 of 2024 Zilog has [announced End-of-Life](https://www.mouser.com/PCN/Littelfuse_PCN_Z84C00.pdf) for Z80, one of the most famous 8-bit CPUs of all time.
+# STATUS: The chips from the first tapeout were delivered in spring 2025 and are currently being [tested](https://github.com/rejunity/test-z80-open-silicon/)!
+Watch FOSSi Z80 waking up and sending greetings: https://github.com/rejunity/test-z80-open-silicon/
 
-It is a time for open-source and hardware preservation community to step in with a Free and Open Source Silicon (FOSS) replacement for Zilog Z80.
-
-**GOAL: To develop a drop-in Z80 replacement in 8-bit home computers such as [ZX Spectrum](https://www.spectrumforeveryone.co.uk/technical/zx-spectrum-pcb-schematics-layout/) and recent DIY computer kits such as [RC2014](https://rc2014.co.uk).**
-
-The **first** fabrication of **FOSS clone of Z80** is scheduled for **June of 2024**!
+## Tapeouts
+- [x] **DELIVERED!** The **first** silicon tapeout - 130 nm **SKY130** process via [Tiny Tapeout 7](https://tinytapeout.com/runs/tt07/tt_um_rejunity_z80) 
+- [x] **DELIVERED!** **All** 40 pin exposed, QFN64 package, 130 nm **SKY130** process via eFabless [CI2406 shuttle](https://github.com/rejunity/ci2406-rej-pommedeterrible-tholin)
+- [ ] Multiplexed 24 pin, 130nm **SG13g2** process via IHP experimental [2024 shuttle](https://tinytapeout.com/runs/ttihp0p2/tt_um_rejunity_z80)
+- [ ] Multiplexed 24 pin, 130nm **SG13g2** process via IHP [2025a shuttle](https://tinytapeout.com/runs/ttihp25a/tt_um_rejunity_z80)
 
 # Modern free and open source silicon clone of Zilog's Z80
-On the path to become a silicon proven, pin compatible, open-source replacement for classic Zilog Z80.
+On April 15 of 2024 Zilog has [announced End-of-Life](https://www.mouser.com/PCN/Littelfuse_PCN_Z84C00.pdf) for Z80, one of the most famous 8-bit CPUs of all time.
 
-FOSS Z80 leverages [OpenROAD](https://openroad.readthedocs.io/en) flow and FOSS [130 nm Skywater PDK](https://skywater-pdk.readthedocs.io/en/main/) to synthesize production ready silicon. [Tiny Tapeout](https://tinytapeout.com) infrastructure is used to test and pool design with many others to reduce the cost of physical chip fabrication at [Skywater Foundries](https://en.wikipedia.org/wiki/SkyWater_Technology).
+It is a time for open-source and hardware preservation community to step in with a Free and Open Source Silicon (FOSSi) replacement for Zilog Z80.
 
-## The first iteration of FOSS Z80 silicon
+## Silicon proven, pin compatible, open-source replacement for classic Zilog Z80
 
-The first iteration is developed with [Tiny Tapeout 07](https://tinytapeout.com) using 130 nm process and fits on a 0.064 mm<sup>2</sup> die area. The first fabrication is scheduled for June of 2024 as a part of [CI 2406 Shuttle](https://platform.efabless.com/projects/shuttle/23).
+The goal of this projecty is to develop a drop-in Z80 replacement in 8-bit home computers such as [ZX Spectrum](https://www.spectrumforeveryone.co.uk/technical/zx-spectrum-pcb-schematics-layout/) and recent DIY computer kits such as [RC2014](https://rc2014.co.uk).
 
-Check status here: https://app.tinytapeout.com/projects/668
+FOSS Z80 leverages [OpenROAD](https://openroad.readthedocs.io/en) flow with open source [130 nm Skywater PDK](https://skywater-pdk.readthedocs.io/en/main/), [130 nm IHP PDK](https://ihp-open-pdk-docs.readthedocs.io/en/latest/) to synthesize production ready silicon. [Tiny Tapeout](https://tinytapeout.com) infrastructure is used to test and pool design with many others to reduce the cost of physical chip fabrication at [Skywater Foundries](https://en.wikipedia.org/wiki/SkyWater_Technology).
 
-<p align="center" width="100%">
-    <img width="30%" src="./docs/tt07_z80.png">
-</p>
+## Supported Open PDKs
+1. SKY130 [SkyWater Technology Foundry's 130nm node](https://github.com/google/skywater-pdk)
+2. SG13 [IHP Foundry's BiCMOS 130nm node](https://github.com/IHP-GmbH/IHP-Open-PDK)
+
+## The first iteration of FOSSi Z80 silicon
+
+The first iteration was developed with [Tiny Tapeout](https://tinytapeout.com) infrastructure using 130 nm process and fits on a 0.064 mm<sup>2</sup> die area. The first tapeout was submitted on June of 2024 to **eFabless ChipIgnite CI2406 Shuttle**.
 
 The implementation is based around Guy Hutchison's [TV80](https://github.com/hutch31/tv80) Verilog core.
 
 Below is the image of [GDSII](https://en.wikipedia.org/wiki/GDSII) integrated circuit layout for FOSS Z80. It is the result of automatic place-and-route flow in [OpenROAD](https://openroad.readthedocs.io/en) using [130 nm](https://skywater-pdk.readthedocs.io/en/main/) "gates" logic elements.
 
 <p align="center" width="100%">
+    <img width="30%" src="./docs/tt07_z80.png">
     <img width="50%" src="./docs/2x2_tiles.png">
 </p>
 
 ## Plan
-- [x] Submit with [Tiny Tapeout 07](https://app.tinytapeout.com/projects/668)
-- [x] Write basic documentation for Tiny Tapeout 07: [docs/info.md](docs/info.md)
-- [ ] Tapeout with ChipIgnite in QFN64 package, create a PCB adapter from QFN64 to DIP40
-- [ ] Add thorough tests for all Z80 instructions including the 'illegal' ones [ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) to a testbench
-- [ ] Add thorough timing test of the input/output signals
-- [ ] Integrate the netlist based Z80 core into the testbench for ultimate validation
-- [ ] Compare different implementations: Verilog core [A-Z80](https://github.com/gdevic/A-Z80), Netlist based [Z80Explorer](https://github.com/gdevic/Z80Explorer), etc
-- [ ] Create gate-level layouts that would resemble the original Z80 layout, see the original [chip dies](#Z80-Die-shots) below. Zilog designed Z80 by manually placing each transistor by - - [ ] Tapeout with DIP40 package
-hand.
+- [x] Tapeout on a 130 nm node via [Tiny Tapeout 07](https://app.tinytapeout.com/projects/668) with a 24 pin revision to fit into Tiny Tapeout constraints
+- [x] Tapeout with all 40 pins exposed via eFabless ChipIgnite in QFN64 package
+- [x] Tapeout with two different Open Source PDKs:
+    - [x] SKY130 [SkyWater Technology Foundry's 130nm node](https://github.com/google/skywater-pdk)
+    - [x] SG13 [IHP Foundry's BiCMOS 130nm node](https://github.com/IHP-GmbH/IHP-Open-PDK)
+- [x] Run [thorough tests](https://github.com/rejunity/test-z80-open-silicon) on a chip, summary:
+    - [x] Z80 works in general and communicates with RP2040 that serves as a RAM
+    - [ ] 2 tests [ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) failing on undocumented flags
+    - [ ] 1 test [ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) failing in general.
+- [ ] **WIP** Create a PCB adapter from QFN64 to DIP40 [https://github.com/hardesk/zxx-pcb]
+- [ ] Thorough timing test of the input/output signals in compariston to original Z80
+- [ ] Testbench
+    - [ ] **WIP** Add thorough tests for all Z80 instructions including the 'illegal' ones [ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) to a testbench
+    - [ ] Add thorough timing test of the input/output signals
+    - [ ] Integrate the netlist based Z80 core into the testbench for ultimate validation
+    - [ ] Compare different implementations: Verilog core [A-Z80](https://github.com/gdevic/A-Z80), Netlist based [Z80Explorer](https://github.com/gdevic/Z80Explorer), etc
+- [ ] Create gate-level layouts that would resemble the original Z80 layout, see the original [chip dies](#Z80-Die-shots) below. Zilog designed Z80 by manually placing each transistor by hand.
+- [ ] Ceramic DIP40 package
 
 # How to Contribute
 Join the [Tiny Tapeout Discord](https://tinytapeout.com/discord) forum.
@@ -50,7 +64,7 @@ Browse [issues](https://github.com/rejunity/z80-open-silicon/issues).
 
 # Quick start
 
-For project overview, take a look at the [slide deck](https://docs.google.com/presentation/d/1-vcqAm9nMe9o_P5PAofOEgkbrVqfZs-Lbs7DuWj7h2o/edit#slide=id.p) and [video](https://www.youtube.com/watch?v=GI1e22A2J3U) where we discuss FOSS Z80 project with Matthew Venn.
+For project overview, take a look at the [slide deck](https://docs.google.com/presentation/d/1-vcqAm9nMe9o_P5PAofOEgkbrVqfZs-Lbs7DuWj7h2o/edit#slide=id.p) and [video](https://www.youtube.com/watch?v=GI1e22A2J3U) where we discuss FOSSi Z80 project with Matthew Venn.
 
 Code:
 * You can find the top module in [src/tt_um_rejunity_z80.v](src/tt_um_rejunity_z80.v). It instantiates Z80 and adheres to [TinyTapeout constraints](https://tinytapeout.com/specs/gpio/) including multiplexing the output pins onto the 8 pins of TinyTapeout chip.
