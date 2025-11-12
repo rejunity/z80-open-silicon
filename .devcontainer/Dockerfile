@@ -3,14 +3,14 @@ FROM mcr.microsoft.com/vscode/devcontainers/base:${VARIANT}
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PDK_ROOT=/home/vscode/ttsetup/pdk
-ENV PDK=sky130A
+ENV PDK=gf180mcuD
 
 RUN apt update
 RUN apt install -y iverilog gtkwave python3 python3-pip python3-venv python3-tk python-is-python3 libcairo2 verilator libpng-dev libqhull-dev
 
 # Clone tt-support-tools
 RUN mkdir -p /ttsetup
-RUN git clone -b tt10 https://github.com/TinyTapeout/tt-support-tools /ttsetup/tt-support-tools
+RUN git clone https://github.com/TinyTapeout/tt-support-tools /ttsetup/tt-support-tools
 
 COPY test/requirements.txt /ttsetup/test_requirements.txt
 COPY .devcontainer/copy_tt_support_tools.sh /ttsetup
@@ -23,5 +23,5 @@ RUN umask 022 && \
     tar zxf - -C /usr/local --strip-components=1 && \
     chmod 755 /usr/local/bin
 
-# Install openlane
-RUN pip3 install openlane==2.1.5
+# Install LibreLane
+RUN pip3 install librelane==2.4.2

@@ -16,4 +16,4 @@ jobs:
           submodules: recursive
 
       - name: FPGA bitstream for TT ASIC Sim (ICE40UP5K)
-        uses: TinyTapeout/tt-gds-action/fpga/ice40up5k@tt10
+        uses: TinyTapeout/tt-gds-action/fpga/ice40up5k@ttgf0p2
