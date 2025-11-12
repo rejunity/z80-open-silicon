@@ -37,8 +37,8 @@ COMPILE_ARGS 		+= -I$(SRC_DIR)
 VERILOG_SOURCES += $(PWD)/tb.v
 TOPLEVEL = tb
 
-# MODULE is the basename of the Python test file
-MODULE = test
+# List test modules to run, separated by commas and without the .py suffix:
+COCOTB_TEST_MODULES = test
 
 # include cocotb's make rules to take care of the simulator setup
 include $(shell cocotb-config --makefiles)/Makefile.sim

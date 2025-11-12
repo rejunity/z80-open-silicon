@@ -1,2 +1,2 @@
-pytest==8.1.1
-cocotb==1.8.1
+pytest==8.4.2
+cocotb==2.0.0
