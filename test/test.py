@@ -74,7 +74,7 @@ async def start_and_reset(dut):
     dut._log.info("Start")
 
     # Set the clock period to ~62.5 ns (16 MHz = 4MHz Z80 clock)
-    clock = Clock(dut.clk, 62, units="ns")
+    clock = Clock(dut.clk, 62, unit="ns")
     cocotb.start_soon(clock.start())
 
     # Reset
@@ -95,12 +95,12 @@ async def z80_step(z80, cycle, verbose=False):
     # z80.ena.value = 1
     # z80.ui_in.value = BUS_READY | 0b0000_0000
     # await ClockCycles(z80.clk, 1)
-    # addr = z80.uo_out.value
+    # addr = z80.uo_out.value.to_unsigned()
 
     # z80.ena.value = 0
     # z80.ui_in.value = BUS_READY | 0b0100_0000
     # await ClockCycles(z80.clk, 1)
-    # addr = addr | z80.uo_out.value << 8
+    # addr = addr | z80.uo_out.value.to_unsigned()
 
 
 
@@ -109,14 +109,14 @@ async def z80_step(z80, cycle, verbose=False):
 
     z80.ui_in.value = BUS_READY | 0b1000_0000
     await ClockCycles(z80.clk, 1)
-    controls = z80.uo_out.value
+    controls = z80.uo_out.value.to_unsigned()
     z80.ena.value = 0
     z80.ui_in.value = BUS_READY | 0b0000_0000
     await ClockCycles(z80.clk, 1)
-    addr = z80.uo_out.value
+    addr = z80.uo_out.value.to_unsigned()
     z80.ui_in.value = BUS_READY | 0b0100_0000
     await ClockCycles(z80.clk, 1)
-    addr = addr | z80.uo_out.value << 8
+    addr = addr | z80.uo_out.value.to_unsigned() << 8
     z80.ena.value = 1
 
 
