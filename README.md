@@ -1,13 +1,19 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg)
 
-# STATUS: The chips from the first tapeout were delivered in spring 2025 and are currently being [tested](https://github.com/rejunity/test-z80-open-silicon/)!
-Watch FOSSi Z80 waking up and sending greetings: https://github.com/rejunity/test-z80-open-silicon/
+# STATUS: Working on a DIP40 version for [GF180MCU](https://www.crowdsupply.com/wafer-space/gf180mcu-run-1/). The chips from the second tapeout were delivered in summer 2025 and are currently being [tested](https://github.com/rejunity/test-z80-open-silicon/)!
+Watch FOSSi Z80 made with [Tiny Tapeout](https://tinytapeout.com) waking up and sending greetings: https://github.com/rejunity/test-z80-open-silicon/
 
 ## Tapeouts
-- [x] **DELIVERED!** The **first** silicon tapeout - 130 nm **SKY130** process via [Tiny Tapeout 7](https://tinytapeout.com/runs/tt07/tt_um_rejunity_z80) 
-- [x] **DELIVERED!** **All** 40 pin exposed, QFN64 package, 130 nm **SKY130** process via eFabless [CI2406 shuttle](https://github.com/rejunity/ci2406-rej-pommedeterrible-tholin)
+- [x] **FUNCTIONAL!** The **first** silicon tapeout - 130 nm **SKY130** process via [Tiny Tapeout 7](https://tinytapeout.com/runs/tt07/tt_um_rejunity_z80)
+- [x] **DELIVERED/TESTING!** **All** 40 pin exposed, QFN64 package, 130 nm **SKY130** process via eFabless [CI2406 shuttle](https://github.com/rejunity/ci2406-rej-pommedeterrible-tholin)
 - [ ] Multiplexed 24 pin, 130nm **SG13g2** process via IHP experimental [2024 shuttle](https://tinytapeout.com/runs/ttihp0p2/tt_um_rejunity_z80)
-- [ ] Multiplexed 24 pin, 130nm **SG13g2** process via IHP [2025a shuttle](https://tinytapeout.com/runs/ttihp25a/tt_um_rejunity_z80)
+- [x] **DELIVERED!** Multiplexed 24 pin, 130nm **SG13g2** process via IHP [2025a shuttle](https://tinytapeout.com/runs/ttihp25a/tt_um_rejunity_z80)
+- [ ] **WIP!!!** 40 pin COB "Chip on Board" DIP40 PCB, 180nm **GF180MCU** process via Wafer.Space [GF180MCU Run 1](https://www.crowdsupply.com/wafer-space/gf180mcu-run-1/)
+
+
+<p align="center" width="100%">
+    <img width="610" height="802" alt="image" src="https://github.com/user-attachments/assets/f6fcc7f3-2906-4b2c-b2c7-284fb174358d" />
+</p>
 
 # Modern free and open source silicon clone of Zilog's Z80
 On April 15 of 2024 Zilog has [announced End-of-Life](https://www.mouser.com/PCN/Littelfuse_PCN_Z84C00.pdf) for Z80, one of the most famous 8-bit CPUs of all time.
