@@ -1,15 +1,15 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg)
 
-# STATUS: Working on a DIP40 version for [GF180MCU](https://www.crowdsupply.com/wafer-space/gf180mcu-run-1/). The chips from the second tapeout were delivered in summer 2025 and are currently being [tested](https://github.com/rejunity/test-z80-open-silicon/)!
+# WIP: DIP40 version for [GF180MCU](https://www.crowdsupply.com/wafer-space/gf180mcu-run-1/).
+# STATUS: The chips from the first two tapeouts were delivered in 2025, are [functional](https://github.com/rejunity/test-z80-open-silicon/) and are currently being [tested](https://github.com/hardesk/zxx-pcb)!
 Watch FOSSi Z80 made with [Tiny Tapeout](https://tinytapeout.com) waking up and sending greetings: https://github.com/rejunity/test-z80-open-silicon/
 
 ## Tapeouts
-- [x] **FUNCTIONAL!** The **first** silicon tapeout - 130 nm **SKY130** process via [Tiny Tapeout 7](https://tinytapeout.com/runs/tt07/tt_um_rejunity_z80)
+- [x] **FUNCTIONAL!** The **first** silicon tapeout - 130 nm **SKY130** node via [Tiny Tapeout 7](https://tinytapeout.com/runs/tt07/tt_um_rejunity_z80)
 - [x] **DELIVERED/TESTING!** **All** 40 pin exposed, QFN64 package, 130 nm **SKY130** process via eFabless [CI2406 shuttle](https://github.com/rejunity/ci2406-rej-pommedeterrible-tholin)
-- [ ] Multiplexed 24 pin, 130nm **SG13g2** process via IHP experimental [2024 shuttle](https://tinytapeout.com/runs/ttihp0p2/tt_um_rejunity_z80)
-- [x] **DELIVERED!** Multiplexed 24 pin, 130nm **SG13g2** process via IHP [2025a shuttle](https://tinytapeout.com/runs/ttihp25a/tt_um_rejunity_z80)
-- [ ] **WIP!!!** 40 pin COB "Chip on Board" DIP40 PCB, 180nm **GF180MCU** process via Wafer.Space [GF180MCU Run 1](https://www.crowdsupply.com/wafer-space/gf180mcu-run-1/)
-
+- [ ] Multiplexed 24 pin, 130nm **SG13g2** node via IHP experimental [2024 shuttle](https://tinytapeout.com/runs/ttihp0p2/tt_um_rejunity_z80)
+- [x] **DELIVERED!** Multiplexed 24 pin, 130nm **SG13g2** node via IHP [2025a shuttle](https://tinytapeout.com/runs/ttihp25a/tt_um_rejunity_z80)
+- [ ] **WIP!!!** Classic DIP40 form factor with COB (Chip on Board), 180nm **GF180MCU** node via Wafer.Space [GF180MCU Run 1](https://www.crowdsupply.com/wafer-space/gf180mcu-run-1/)
 
 <p align="center" width="100%">
     <img width="610" height="802" alt="image" src="https://github.com/user-attachments/assets/f6fcc7f3-2906-4b2c-b2c7-284fb174358d" />
@@ -50,11 +50,11 @@ Below is the image of [GDSII](https://en.wikipedia.org/wiki/GDSII) integrated ci
 - [x] Tapeout with the three different Open Source PDKs:
     - [x] SKY130 [SkyWater Technology Foundry's 130nm node](https://github.com/google/skywater-pdk)
     - [x] SG13 [IHP Foundry's BiCMOS 130nm node](https://github.com/IHP-GmbH/IHP-Open-PDK)
-    - [ ] **WIP** [Global Foundry's 180nm node](https://github.com/google/gf180mcu-pdk)
+    - [ ] **WIP** GF180 [Global Foundry's 180nm node](https://github.com/google/gf180mcu-pdk)
 - [x] Run [thorough tests](https://github.com/rejunity/test-z80-open-silicon) on a chip, summary:
-    - [x] Z80 works in general and communicates with RP2040 / RP2350 that serves as a RAM
-    - [x] **Fixed** 1 test [ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) failing in general.
-    - [ ] 2 tests [ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) failing on undocumented flags
+    - [x] Z80 functions well and communicates with RP2040 / RP2350 serving as a RAM
+    - [x] **Fixed** bug in DAA instruction, caugth by [ZEXDOC/ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) test suitd
+    - [ ] 2 tests [ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) failing on undocumented flags.
 - [x] Create a PCB adapter from QFN64 to DIP40 [https://github.com/hardesk/zxx-pcb]
 - [ ] **WIP** Produce COB (Chip-on-Board) DIP40 PCB [https://github.com/rejunity/ws0-z80-open-silicon-gf180mcu]
 - [ ] Thorough timing test of the input/output signals in compariston to original Z80
