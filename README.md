@@ -29,6 +29,7 @@ FOSS Z80 leverages [OpenROAD](https://openroad.readthedocs.io/en) flow with open
 ## Supported Open PDKs
 1. SKY130 [SkyWater Technology Foundry's 130nm node](https://github.com/google/skywater-pdk)
 2. SG13 [IHP Foundry's BiCMOS 130nm node](https://github.com/IHP-GmbH/IHP-Open-PDK)
+3. GF180 [Global Foundry's 180nm node](https://github.com/google/gf180mcu-pdk)
 
 ## The first iteration of FOSSi Z80 silicon
 
@@ -46,14 +47,16 @@ Below is the image of [GDSII](https://en.wikipedia.org/wiki/GDSII) integrated ci
 ## Plan
 - [x] Tapeout on a 130 nm node via [Tiny Tapeout 07](https://app.tinytapeout.com/projects/668) with a 24 pin revision to fit into Tiny Tapeout constraints
 - [x] Tapeout with all 40 pins exposed via eFabless ChipIgnite in QFN64 package
-- [x] Tapeout with two different Open Source PDKs:
+- [x] Tapeout with the three different Open Source PDKs:
     - [x] SKY130 [SkyWater Technology Foundry's 130nm node](https://github.com/google/skywater-pdk)
     - [x] SG13 [IHP Foundry's BiCMOS 130nm node](https://github.com/IHP-GmbH/IHP-Open-PDK)
+    - [ ] **WIP** [Global Foundry's 180nm node](https://github.com/google/gf180mcu-pdk)
 - [x] Run [thorough tests](https://github.com/rejunity/test-z80-open-silicon) on a chip, summary:
-    - [x] Z80 works in general and communicates with RP2040 that serves as a RAM
+    - [x] Z80 works in general and communicates with RP2040 / RP2350 that serves as a RAM
+    - [x] **Fixed** 1 test [ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) failing in general.
     - [ ] 2 tests [ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) failing on undocumented flags
-    - [ ] 1 test [ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) failing in general.
-- [ ] **WIP** Create a PCB adapter from QFN64 to DIP40 [https://github.com/hardesk/zxx-pcb]
+- [x] Create a PCB adapter from QFN64 to DIP40 [https://github.com/hardesk/zxx-pcb]
+- [ ] **WIP** Produce COB (Chip-on-Board) DIP40 PCB [https://github.com/rejunity/ws0-z80-open-silicon-gf180mcu]
 - [ ] Thorough timing test of the input/output signals in compariston to original Z80
 - [ ] Testbench
     - [ ] **WIP** Add thorough tests for all Z80 instructions including the 'illegal' ones [ZEXALL](https://mdfs.net/Software/Z80/Exerciser/) to a testbench
@@ -62,6 +65,7 @@ Below is the image of [GDSII](https://en.wikipedia.org/wiki/GDSII) integrated ci
     - [ ] Compare different implementations: Verilog core [A-Z80](https://github.com/gdevic/A-Z80), Netlist based [Z80Explorer](https://github.com/gdevic/Z80Explorer), etc
 - [ ] Create gate-level layouts that would resemble the original Z80 layout, see the original [chip dies](#Z80-Die-shots) below. Zilog designed Z80 by manually placing each transistor by hand.
 - [ ] Ceramic DIP40 package
+- [ ] Logo / "chip-art" for the project
 
 # How to Contribute
 Join the [Tiny Tapeout Discord](https://tinytapeout.com/discord) forum.
